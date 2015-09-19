@@ -1,5 +1,21 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= appname %>",
+  "version": "<%= appversion %>",
+  "description": "<%= appdescription %>",
+  "license": "<%= applicense %>",
+  "main": "",
+  "author": {
+    "name": "<%= appauthor %>",
+    "email": "<%= appemail %>",
+    "url": ""
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  }
 }

@@ -1,6 +1,16 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= appname %>",
+  "version": "<%= appversion %>",
+  "homepage": "",
+  "authors": [
+    "<%= appauthor %> <%= appemail %>"
+  ],
+  "license": "<%= applicense %>",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
-
