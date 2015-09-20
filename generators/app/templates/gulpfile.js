@@ -117,3 +117,78 @@ gulp.task('scripts', function() {
             message: 'your js files has been minified and concatenated.',
         }));
 });
+
+/* Image compressing task */
+
+gulp.task('images', function() {
+    gulp.src(routes.files.images)
+        .pipe(imagemin())
+        .pipe(gulp.dest(routes.files.imgmin))
+        .pipe(notify({
+            title: 'Images optimized!',
+            message: 'your images has been compressed.',
+        }));
+});
+
+/* Deploy, deploy dist/ files to an ftp server */
+
+gulp.task('deploy', function() {
+    var connection = ftp.create({
+        host: ftpCredentials.host,
+        user: ftpCredentials.user,
+        password: ftpCredentials.password
+    });
+
+    return gulp.src(routes.deployDirs.baseDirFiles, {
+        base: routes.deployDirs.baseDir,
+        buffer: false
+    })
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Deploy failed.",
+                message:"<%= errorMessage %>"
+            })
+        }))
+        .pipe(connection.dest(routes.deployDirs.ftpUploadDir))
+        .pipe(notify({
+            title: 'Deploy succesful!',
+            message: 'Your deploy has been done!.',
+        }));
+});
+
+/* Preproduction beautifiying task (SCSS, JS) */
+
+gulp.task('beautify', function() {
+    gulp.src(routes.scripts.js)
+        .pipe(beautify({indentSize: 4}))
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Beautify failed.",
+                message:"<%= errorMessage %>"
+            })
+        }))
+        .pipe(gulp.dest(routes.scripts.base))
+        .pipe(notify({
+            title: 'JS Beautified!',
+            message: 'beautify task completed.',
+        }));
+});
+
+/* Serving (browserSync) and watching for changes in files */
+
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: './dist/'
+    });
+
+    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);
+    gulp.watch([routes.templates.jade, routes.templates._jade], ['templates']);
+    gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
+});
+
+gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'browser-sync']);
+
+gulp.task('default', function() {
+    gulp.start('build');
+});
+

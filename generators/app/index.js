@@ -126,6 +126,15 @@ module.exports = yeoman.generators.Base.extend({
                 name: 'useBabel',
                 message: 'Would you like to use '+chalk.yellow('Babel'),
                 default: true,
+            },
+            {
+                type: 'confirm',
+                name: 'setupFTP',
+                message: 'Would you like to setup your '+chalk.blue('FTP')+' to use the deploy task',
+                default: true/*,
+                when: function(ans) {
+                    console.log(ans);
+                }*/
             }
         ];
         return answers;
@@ -141,6 +150,7 @@ module.exports = yeoman.generators.Base.extend({
         this.useJade = answers.useJade;
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
+        this.setupFTP = answers.setupFTP;
         callback();
     },
 
