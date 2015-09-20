@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
 <% if (cssPrepro == 'less') { %>    less = require('gulp-less'),<% } else { %>    sass = require('gulp-sass'),<% } %>
-    jade = require('gulp-jade'),
+<% if (useJade == true) { %>    jade = require('gulp-jade'),<% } %>
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),
     plumber = require('gulp-plumber'),
@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     ftp = require('vinyl-ftp'),
-    babel = require('gulp-babel'),
+<% if (useBabel == true) { %>    babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify');
 
@@ -76,9 +76,44 @@ gulp.task('styles', function() {
         .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
         .pipe(browserSync.stream())
-        <% } else { }%>
         .pipe(notify({
             title: 'SCSS Compiled and Minified succesfully!',
             message: 'scss task completed.',
+        }));
+    <% } else { }%>
+});
+<% if (useJade == true) { %>
+// Jade
+
+gulp.task('templates', function() {
+    gulp.src([routes.templates.jade, '!' + routes.templates._jade])
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Compiling Jade.",
+                message:"<%= errorMessage %>"
+            })
+        }))
+        .pipe(jade())
+        .pipe(gulp.dest(routes.files.html))
+        .pipe(browserSync.stream())
+        .pipe(notify({
+            title: 'Jade Compiled succesfully!',
+            message: 'Jade task completed.',
+        }));
+});
+<% } %>
+
+/* Scripts (js) ES6 => ES5, minify and concat into a single file.*/
+
+gulp.task('scripts', function() {
+    return gulp.src(routes.scripts.js)
+        .pipe(concat('script.js'))
+<% if (useBabel == true) { %>        .pipe(babel())<% } %>
+        .pipe(uglify())
+        .pipe(gulp.dest(routes.scripts.jsmin))
+        .pipe(browserSync.stream())
+        .pipe(notify({
+            title: 'JavaScript Minified and Concatenated!',
+            message: 'your js files has been minified and concatenated.',
         }));
 });

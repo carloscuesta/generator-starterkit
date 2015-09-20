@@ -25,16 +25,13 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     _projectFiles: function() {
-        var templateCtx = {
+        var projectInfo = {
             appname: this.appname,
             appversion: this.appversion,
             appdescription: this.appdescription,
             applicense: this.applicense,
             appauthor: this.appauthor,
             appemail: this.appemail,
-            includeFlexboxgrid: this.includeFlexboxgrid,
-            cssPrepro: this.cssPrepro,
-            errorMessage:'<%= error.message %>'
         };
 
         this.fs.copy(
@@ -50,25 +47,30 @@ module.exports = yeoman.generators.Base.extend({
         this.fs.copyTpl(
             this.templatePath('gulpfile.js'),
             this.destinationPath('gulpfile.js'),
-            templateCtx
+            {
+                useJade: this.useJade,
+                cssPrepro: this.cssPrepro,
+                useBabel: this.useBabel,
+                errorMessage:'<%= error.message %>'
+            }
         );
 
         this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
-            templateCtx
+            projectInfo
         );
 
         this.fs.copyTpl(
             this.templatePath('_bower.json'),
             this.destinationPath('bower.json'),
-            templateCtx
+            projectInfo
         );
 
         this.fs.copyTpl(
             this.templatePath('_readme.md'),
             this.destinationPath('README.md'),
-            templateCtx
+            projectInfo
         );
     },
 
@@ -103,14 +105,14 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 type: 'confirm',
-                name: 'includeFlexboxgrid',
-                message: 'Would you like to use Flexboxgrid',
+                name: 'useJade',
+                message: 'Would you like to use '+chalk.green('Jade'),
                 default: true,
             },
             {
                 type: 'list',
                 name: 'cssPrepro',
-                message: 'Choose a CSS preprocessor',
+                message: 'Choose a '+chalk.magenta('CSS preprocessor'),
                 choices: [{
                     name: 'Sass',
                     value: 'sass'
@@ -118,6 +120,12 @@ module.exports = yeoman.generators.Base.extend({
                     name: 'Less',
                     value: 'less'
                 }]
+            },
+            {
+                type: 'confirm',
+                name: 'useBabel',
+                message: 'Would you like to use '+chalk.yellow('Babel'),
+                default: true,
             }
         ];
         return answers;
@@ -130,13 +138,14 @@ module.exports = yeoman.generators.Base.extend({
         this.applicense = answers.license;
         this.appauthor = answers.author;
         this.appemail = answers.email;
-        this.includeFlexboxgrid = answers.includeFlexboxgrid;
+        this.useJade = answers.useJade;
         this.cssPrepro = answers.cssPrepro;
+        this.useBabel = answers.useBabel;
         callback();
     },
 
     initializing: function() {
-        var greeting = 'Welcome to the ' + chalk.red.bold('starterkit') + '!' + ' A solid ' + chalk.blue('webkit') + ' to develop at the' + chalk.yellow(' front end');
+        var greeting = 'Welcome to the ' + chalk.red.bold('starterkit') + '!' + ' A solid ' + chalk.blue('webkit') + ' to develop '+chalk.yellow('front end')+' static projects';
 
         this.log(yosay(greeting, {
             maxLength: 26
@@ -158,6 +167,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
-    //    this.installDependencies();
+        this.installDependencies();
     }
 });
