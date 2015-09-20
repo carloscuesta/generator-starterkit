@@ -3,7 +3,7 @@
   "version": "<%= appversion %>",
   "homepage": "",
   "authors": [
-    "<%= appauthor %> <%= appemail %>"
+    "<%= appauthor %> <<%= appemail %>>"
   ],
   "license": "<%= applicense %>",
   "ignore": [

@@ -31,7 +31,10 @@ module.exports = yeoman.generators.Base.extend({
             appdescription: this.appdescription,
             applicense: this.applicense,
             appauthor: this.appauthor,
-            appemail: this.appemail
+            appemail: this.appemail,
+            includeFlexboxgrid: this.includeFlexboxgrid,
+            cssPrepro: this.cssPrepro,
+            errorMessage:'<%= error.message %>'
         };
 
         this.fs.copy(
@@ -44,9 +47,10 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('.jshintrc')
         );
 
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('gulpfile.js'),
-            this.destinationPath('gulpfile.js')
+            this.destinationPath('gulpfile.js'),
+            templateCtx
         );
 
         this.fs.copyTpl(
@@ -58,6 +62,12 @@ module.exports = yeoman.generators.Base.extend({
         this.fs.copyTpl(
             this.templatePath('_bower.json'),
             this.destinationPath('bower.json'),
+            templateCtx
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('_readme.md'),
+            this.destinationPath('README.md'),
             templateCtx
         );
     },
@@ -84,24 +94,44 @@ module.exports = yeoman.generators.Base.extend({
                 default: 'MIT'
             },
             {
-                name: 'name',
+                name: 'author',
                 message: 'What is your name'
             },
             {
                 name: 'email',
                 message: 'What is your email address'
             },
+            {
+                type: 'confirm',
+                name: 'includeFlexboxgrid',
+                message: 'Would you like to use Flexboxgrid',
+                default: true,
+            },
+            {
+                type: 'list',
+                name: 'cssPrepro',
+                message: 'Choose a CSS preprocessor',
+                choices: [{
+                    name: 'Sass',
+                    value: 'sass'
+                }, {
+                    name: 'Less',
+                    value: 'less'
+                }]
+            }
         ];
         return answers;
     },
 
     _getAnswers: function(answers, callback) {
         this.appname = answers.name;
-        this.appdescription = answers.appdescription;
+        this.appdescription = answers.description;
         this.appversion = answers.version;
         this.applicense = answers.license;
-        this.appauthor = answers.yourname;
+        this.appauthor = answers.author;
         this.appemail = answers.email;
+        this.includeFlexboxgrid = answers.includeFlexboxgrid;
+        this.cssPrepro = answers.cssPrepro;
         callback();
     },
 
@@ -128,6 +158,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
-        this.installDependencies();
+    //    this.installDependencies();
     }
 });
