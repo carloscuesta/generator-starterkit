@@ -20,9 +20,9 @@ describe('starterkit:app', function () {
       '.editorconfig',
       '.jshintrc',
       'README.md',
-      'gulpfile.js',
-      'src/styles/style.scss'
-/*      'dist/assets/files/images/',
+      'gulpfile.js'
+/*    'src/styles/style.scss'
+      'dist/assets/files/images/',
       'dist/assets/js',
       'src/images/',
       'src/scripts',
