@@ -18,7 +18,18 @@ describe('starterkit:app', function () {
       'bower.json',
       'package.json',
       '.editorconfig',
-      '.jshintrc'
+      '.jshintrc',
+      'README.md',
+      'gulpfile.js',
+      'src/styles/style.scss'
+/*      'dist/assets/files/images/',
+      'dist/assets/js',
+      'src/images/',
+      'src/scripts',
+      'src/styles/',
+      'src/styles/_includes/',
+      'src/templates/',
+      'src/templates/_includes/' */
     ]);
   });
 });

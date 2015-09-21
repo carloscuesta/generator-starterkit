@@ -1,6 +1,7 @@
-var gulp = require('gulp'),
-<% if (cssPrepro == 'less') { %>    less = require('gulp-less'),<% } else { %>    sass = require('gulp-sass'),<% } %>
-<% if (useJade == true) { %>    jade = require('gulp-jade'),<% } %>
+var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
+    less = require('gulp-less'),<% } else { %>
+    sass = require('gulp-sass'),<% } %><% if (useJade == true) { %>
+    jade = require('gulp-jade'),<% } %>
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),
     plumber = require('gulp-plumber'),
@@ -9,8 +10,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
-    ftp = require('vinyl-ftp'),
-<% if (useBabel == true) { %>    babel = require('gulp-babel'),<% } %>
+    ftp = require('vinyl-ftp'),<% if (useBabel == true) { %>
+    babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify');
 
@@ -101,14 +102,14 @@ gulp.task('templates', function() {
             message: 'Jade task completed.',
         }));
 });
-<% } %>
 
+<% } %>
 /* Scripts (js) ES6 => ES5, minify and concat into a single file.*/
 
 gulp.task('scripts', function() {
     return gulp.src(routes.scripts.js)
-        .pipe(concat('script.js'))
-<% if (useBabel == true) { %>        .pipe(babel())<% } %>
+        .pipe(concat('script.js'))<% if (useBabel == true) { %>
+        .pipe(babel())<% } %>
         .pipe(uglify())
         .pipe(gulp.dest(routes.scripts.jsmin))
         .pipe(browserSync.stream())

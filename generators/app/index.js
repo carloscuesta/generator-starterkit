@@ -58,7 +58,17 @@ module.exports = yeoman.generators.Base.extend({
         this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
-            projectInfo
+            {
+                appname: this.appname,
+                appversion: this.appversion,
+                appdescription: this.appdescription,
+                applicense: this.applicense,
+                appauthor: this.appauthor,
+                appemail: this.appemail,
+                useBabel: this.useBabel,
+                useJade: this.useJade,
+                cssPrepro: this.cssPrepro,
+            }
         );
 
         this.fs.copyTpl(
@@ -72,6 +82,17 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('README.md'),
             projectInfo
         );
+/*
+        this.fs.copy(
+            this.templatePath('styles/sass/_*.scss'),
+            this.destinationPath('src/styles/_includes/')
+        );
+
+        this.fs.copy(
+            this.templatePath('styles/sass/*.scss'),
+            this.destinationPath('src/styles/')
+        );
+*/
     },
 
     _askUser: function() {
