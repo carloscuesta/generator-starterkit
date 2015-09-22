@@ -63,6 +63,7 @@ module.exports = yeoman.generators.Base.extend({
                 useBabel: this.useBabel,
                 useJade: this.useJade,
                 cssPrepro: this.cssPrepro,
+                useFlexboxgrid: this.useFlexboxgrid
             }
         );
 
@@ -70,7 +71,6 @@ module.exports = yeoman.generators.Base.extend({
             this.templatePath('_readme.md'),
             this.destinationPath('README.md'),
             {
-                additionalPackages: this.additionalPackages
             }
         );
 
@@ -216,10 +216,12 @@ module.exports = yeoman.generators.Base.extend({
                 choices: [
                     {
                         name: 'Flexboxgrid',
+                        value: 'useFlexboxgrid',
                         checked: true
                     },
                     {
-                        name: 'Bootstrap'
+                        name: 'Bootstrap',
+                        value: 'useBootstrap'
                     }
                 ]
             }
@@ -242,7 +244,6 @@ module.exports = yeoman.generators.Base.extend({
         this.ftpUser = answers.ftpUser;
         this.ftpPassword = answers.ftpPassword;
         this.ftpDeployDir = answers.ftpDeployDir;
-        this.additionalPackages = answers.additionalPackages;
         callback();
     },
 
@@ -270,7 +271,16 @@ module.exports = yeoman.generators.Base.extend({
         var done = this.async();
 
         this.prompt(this._askUser(), function(answers) {
+            var packages = answers.additionalPackages;
+
             this._getAnswers(answers, done);
+
+            function hasAdditionalPackages(pkg) {
+                return packages && packages.indexOf(pkg) !== -1;
+            }
+
+            this.useFlexboxgrid = hasAdditionalPackages('useFlexboxgrid');
+
             done();
         }.bind(this));
     },
