@@ -44,16 +44,16 @@ var routes = {
     deployDirs: {
         baseDir: 'dist/',
         baseDirFiles: 'dist/**',
-        ftpUploadDir: 'FTP-DIRECTORY'
+        ftpUploadDir: '<%= ftpDeployDir %>'
     }
 };
 
 /* ftpCredentials: info used to deploy @ ftp server */
 
 var ftpCredentials = {
-    host: 'HOST',
-    user: 'USER',
-    password: 'PASSWORD'
+    host: '<%= ftpHost %>',
+    user: '<%= ftpUser %>',
+    password: '<%= ftpPassword %>'
 };
 
 /* Compiling Tasks */

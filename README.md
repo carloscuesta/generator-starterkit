@@ -1,7 +1,9 @@
-# generator-starterkit [![Build Status](https://secure.travis-ci.org/carloscuesta/generator-starterkit.png?branch=master)](https://travis-ci.org/carloscuesta/generator-starterkit)
+# generator-starterkit 
+
+[![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg)](https://travis-ci.org/carloscuesta/generator-starterkit)
+[![Dependency Status](https://img.shields.io/david/carloscuesta/generator-starterkit.svg)](https://david-dm.org/carloscuesta/generator-starterkit)
 
 > [Yeoman](http://yeoman.io) generator
-
 
 ## Getting Started
 

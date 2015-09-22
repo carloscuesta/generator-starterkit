@@ -31,7 +31,7 @@ module.exports = yeoman.generators.Base.extend({
             appdescription: this.appdescription,
             applicense: this.applicense,
             appauthor: this.appauthor,
-            appemail: this.appemail,
+            appemail: this.appemail
         };
 
         this.fs.copy(
@@ -51,6 +51,10 @@ module.exports = yeoman.generators.Base.extend({
                 useJade: this.useJade,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
+                ftpHost: this.ftpHost,
+                ftpUser: this.ftpUser,
+                ftpPassword: this.ftpPassword,
+                ftpDeployDir: this.ftpDeployDir,
                 errorMessage:'<%= error.message %>'
             }
         );
@@ -82,17 +86,6 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('README.md'),
             projectInfo
         );
-/*
-        this.fs.copy(
-            this.templatePath('styles/sass/_*.scss'),
-            this.destinationPath('src/styles/_includes/')
-        );
-
-        this.fs.copy(
-            this.templatePath('styles/sass/*.scss'),
-            this.destinationPath('src/styles/')
-        );
-*/
     },
 
     _askUser: function() {
@@ -128,7 +121,7 @@ module.exports = yeoman.generators.Base.extend({
                 type: 'confirm',
                 name: 'useJade',
                 message: 'Would you like to use '+chalk.green('Jade'),
-                default: true,
+                default: true
             },
             {
                 type: 'list',
@@ -146,17 +139,73 @@ module.exports = yeoman.generators.Base.extend({
                 type: 'confirm',
                 name: 'useBabel',
                 message: 'Would you like to use '+chalk.yellow('Babel'),
-                default: true,
+                default: true
             },
             {
                 type: 'confirm',
                 name: 'setupFTP',
-                message: 'Would you like to setup your '+chalk.blue('FTP')+' to use the deploy task',
-                default: true/*,
-                when: function(ans) {
-                    console.log(ans);
-                }*/
-            }
+                message: 'Would you like to setup your '+chalk.blue('FTP')+' to use the deploy task'
+            },
+            {
+                type: 'input',
+                name: 'ftpHost',
+                message: 'Please enter your '+chalk.blue('ftp host:'),
+                when: function (answers) {
+                    return answers.setupFTP;
+                },
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('ftpHost can\'t be empty!');
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'ftpUser',
+                message: 'Please enter your '+chalk.blue('ftp user:'),
+                when: function (answers) {
+                    return answers.setupFTP;
+                },
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('ftpUser can\'t be empty!');
+                    }
+                }
+            },
+            {
+                type: 'password',
+                name: 'ftpPassword',
+                message: 'Please enter your '+chalk.blue('ftp password'),
+                when: function (answers) {
+                    return answers.setupFTP;
+                },
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('ftpPassword can\'t be empty!');
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'ftpDeployDir',
+                message: 'Please enter the '+chalk.blue('ftp directory')+' where the deploy will go:',
+                when: function (answers) {
+                    return answers.setupFTP;
+                },
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('ftpRemoteDir can\'t be empty!');
+                    }
+                }
+            },
         ];
         return answers;
     },
@@ -172,12 +221,15 @@ module.exports = yeoman.generators.Base.extend({
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
         this.setupFTP = answers.setupFTP;
+        this.ftpHost = answers.ftpHost;
+        this.ftpUser = answers.ftpUser;
+        this.ftpPassword = answers.ftpPassword;
+        this.ftpDeployDir = answers.ftpDeployDir;
         callback();
     },
 
     initializing: function() {
         var greeting = 'Welcome to the ' + chalk.red.bold('starterkit') + '!' + ' A solid ' + chalk.blue('webkit') + ' to develop '+chalk.yellow('front end')+' static projects';
-
         this.log(yosay(greeting, {
             maxLength: 26
         }));
