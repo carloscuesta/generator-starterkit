@@ -25,15 +25,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     _projectFiles: function() {
-        var projectInfo = {
-            appname: this.appname,
-            appversion: this.appversion,
-            appdescription: this.appdescription,
-            applicense: this.applicense,
-            appauthor: this.appauthor,
-            appemail: this.appemail
-        };
-
         this.fs.copy(
             this.templatePath('editorconfig'),
             this.destinationPath('.editorconfig')
@@ -76,16 +67,28 @@ module.exports = yeoman.generators.Base.extend({
         );
 
         this.fs.copyTpl(
-            this.templatePath('_bower.json'),
-            this.destinationPath('bower.json'),
-            projectInfo
-        );
-
-        this.fs.copyTpl(
             this.templatePath('_readme.md'),
             this.destinationPath('README.md'),
-            projectInfo
+            {
+                additionalPackages: this.additionalPackages
+            }
         );
+
+        this.fs.copy(
+            this.templatePath('styles/'+this.cssPrepro+'/_includes/_*.'+this.cssPrepro),
+            this.destinationPath('src/styles/_includes')
+        );
+
+        this.fs.copy(
+            this.templatePath('styles/'+this.cssPrepro+'/*.'+this.cssPrepro),
+            this.destinationPath('src/styles')
+        );
+
+        this.fs.copy(
+            this.templatePath('scripts/*.js'),
+            this.destinationPath('src/scripts/')
+        );
+
     },
 
     _askUser: function() {
@@ -129,7 +132,7 @@ module.exports = yeoman.generators.Base.extend({
                 message: 'Choose a '+chalk.magenta('CSS preprocessor'),
                 choices: [{
                     name: 'Sass',
-                    value: 'sass'
+                    value: 'scss'
                 }, {
                     name: 'Less',
                     value: 'less'
@@ -206,6 +209,20 @@ module.exports = yeoman.generators.Base.extend({
                     }
                 }
             },
+            {
+                type: 'checkbox',
+                name: 'additionalPackages',
+                message: 'Would you like to use some of these packages / frameworks:',
+                choices: [
+                    {
+                        name: 'Flexboxgrid',
+                        checked: true
+                    },
+                    {
+                        name: 'Bootstrap'
+                    }
+                ]
+            }
         ];
         return answers;
     },
@@ -225,14 +242,28 @@ module.exports = yeoman.generators.Base.extend({
         this.ftpUser = answers.ftpUser;
         this.ftpPassword = answers.ftpPassword;
         this.ftpDeployDir = answers.ftpDeployDir;
+        this.additionalPackages = answers.additionalPackages;
         callback();
+    },
+
+    constructor: function() {
+        yeoman.Base.apply(this, arguments);
+
+        this.option('skip-welcome-message', {
+            desc: 'Skips the welcome message',
+            type: Boolean,
+            defaults: false
+        });
     },
 
     initializing: function() {
         var greeting = 'Welcome to the ' + chalk.red.bold('starterkit') + '!' + ' A solid ' + chalk.blue('webkit') + ' to develop '+chalk.yellow('front end')+' static projects';
-        this.log(yosay(greeting, {
-            maxLength: 26
-        }));
+
+        if (!this.options['skip-welcome-message']){
+            this.log(yosay(greeting, {
+                maxLength: 26
+            }));
+        }
     },
 
     prompting: function() {

@@ -1,8 +1,8 @@
 'use strict';
 
-var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var path = require('path'),
+    assert = require('yeoman-generator').assert,
+    helpers = require('yeoman-generator').test;
 
 describe('main', function() {
     before(function(done) {
@@ -16,14 +16,14 @@ describe('main', function() {
             .on('end', done);
     });
 
-    it('creates files', function() {
+    it('creates expected files', function() {
         assert.file([
-            'bower.json',
             'package.json',
             '.editorconfig',
             '.jshintrc',
             'README.md',
-            'gulpfile.js'
+            'gulpfile.js',
+            'src/scripts/index.js'
             /*'src/styles/style.scss'
             'dist/assets/files/images/',
             'dist/assets/js',

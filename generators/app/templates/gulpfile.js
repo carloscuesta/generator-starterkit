@@ -21,6 +21,8 @@ var routes = {
     styles: {
         scss: 'src/styles/*.scss',
         _scss: 'src/styles/_includes/*.scss',
+        less: 'src/styles/*.less',
+        _less: 'src/styles/_includes/*.less',
         css: 'dist/assets/css/'
     },
 
@@ -60,8 +62,24 @@ var ftpCredentials = {
 
 // SCSS
 
-gulp.task('styles', function() {
-    <% if (cssPrepro == 'sass') { %>
+gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
+        return gulp.src(routes.styles.less)
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Compiling SCSS.",
+                message:"<%= errorMessage %>"
+            })
+        }))
+        .pipe(less({}))
+        .pipe(cssimport({}))
+        .pipe(autoprefixer('last 3 versions'))
+        .pipe(rename('style.css'))
+        .pipe(gulp.dest(routes.styles.css))
+        .pipe(browserSync.stream())
+        .pipe(notify({
+            title: 'Less Compiled and Minified succesfully!',
+            message: 'less task completed.',
+        }));<% } else {%>
     return gulp.src(routes.styles.scss)
         .pipe(plumber({
             errorHandler: notify.onError({
@@ -80,8 +98,7 @@ gulp.task('styles', function() {
         .pipe(notify({
             title: 'SCSS Compiled and Minified succesfully!',
             message: 'scss task completed.',
-        }));
-    <% } else { }%>
+        }));<% } %>
 });
 <% if (useJade == true) { %>
 // Jade
@@ -181,8 +198,9 @@ gulp.task('browser-sync', function() {
     browserSync.init({
         server: './dist/'
     });
-
-    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);
+    <% if (cssPrepro=='less') { %>
+    gulp.watch([routes.styles.less, routes.styles._less], ['styles']);<% } else { %>
+    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);<% } %>
     gulp.watch([routes.templates.jade, routes.templates._jade], ['templates']);
     gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
 });
