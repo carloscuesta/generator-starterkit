@@ -21,7 +21,9 @@ module.exports = yeoman.generators.Base.extend({
         mkdirp(srcDir + '/images');
         mkdirp(srcDir + '/scripts');
         mkdirp(srcDir + '/styles/_includes/');
-        mkdirp(srcDir + '/templates/_includes/');
+        if (this.templateLang=='jade') {
+            mkdirp(srcDir + '/templates/_includes/');
+        }
     },
 
     _projectFiles: function() {
@@ -39,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
             this.templatePath('gulpfile.js'),
             this.destinationPath('gulpfile.js'),
             {
-                useJade: this.useJade,
+                templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
                 ftpHost: this.ftpHost,
@@ -61,7 +63,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
-                useJade: this.useJade,
+                templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useFlexboxgrid: this.useFlexboxgrid
             }
@@ -89,6 +91,27 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('src/scripts/')
         );
 
+        switch(this.templateLang) {
+            case 'jade':
+                this.fs.copy(
+                    this.templatePath('templating/jade/*.jade'),
+                    this.destinationPath('src/templates/')
+                );
+
+                this.fs.copy(
+                    this.templatePath('templating/jade/_includes/_*.jade'),
+                    this.destinationPath('src/templates/_includes/')
+                );
+            break;
+
+            case 'html':
+                this.fs.copy(
+                    this.templatePath('templating/html/*.html'),
+                    this.destinationPath('src/templates/')
+                );
+            break;
+        }
+
     },
 
     _askUser: function() {
@@ -100,7 +123,14 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 name: 'description',
-                message: 'What is the description of your project'
+                message: 'What is the description of your project',
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('Enter a description, description can\'t be empty!');
+                    }
+                }
             },
             {
                 name: 'version',
@@ -114,17 +144,38 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 name: 'author',
-                message: 'What is your name'
+                message: 'What is your name',
+                validate: function(value) {
+                    if (value!='') {
+                        return true;
+                    } else {
+                        return chalk.red('Enter your name, name can\'t be empty.');
+                    }
+                }
             },
             {
                 name: 'email',
-                message: 'What is your email address'
+                message: 'What is your email address',
+                validate: function(value) {
+                    var validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+                    if (validEmail) {
+                        return true;
+                    } else {
+                        return chalk.red('Pleas enter a valid email address');
+                    }
+                }
             },
             {
-                type: 'confirm',
-                name: 'useJade',
-                message: 'Would you like to use '+chalk.green('Jade'),
-                default: true
+                type: 'list',
+                name: 'templateLang',
+                message: 'Choose a '+chalk.green('templating or markup language'),
+                choices: [{
+                    name: 'Jade',
+                    value: 'jade'
+                }, {
+                    name: 'Html',
+                    value: 'html'
+                }]
             },
             {
                 type: 'list',
@@ -236,7 +287,7 @@ module.exports = yeoman.generators.Base.extend({
         this.applicense = answers.license;
         this.appauthor = answers.author;
         this.appemail = answers.email;
-        this.useJade = answers.useJade;
+        this.templateLang = answers.templateLang;
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
         this.setupFTP = answers.setupFTP;

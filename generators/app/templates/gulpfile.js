@@ -1,7 +1,8 @@
 var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     less = require('gulp-less'),<% } else { %>
-    sass = require('gulp-sass'),<% } %><% if (useJade == true) { %>
-    jade = require('gulp-jade'),<% } %>
+    sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
+    jade = require('gulp-jade'),<% } else { %>
+    minifyHTML = require('gulp-minify-html'), <% } %>
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),
     plumber = require('gulp-plumber'),
@@ -28,7 +29,8 @@ var routes = {
 
     templates: {
         jade: 'src/templates/*.jade',
-        _jade: 'src/templates/_includes/*.jade'
+        _jade: 'src/templates/_includes/*.jade',
+        html: 'src/templates/*.html'
     },
 
     scripts: {
@@ -63,10 +65,10 @@ var ftpCredentials = {
 // SCSS
 
 gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
-        return gulp.src(routes.styles.less)
+    return gulp.src(routes.styles.less)
         .pipe(plumber({
             errorHandler: notify.onError({
-                title: "Error: Compiling SCSS.",
+                title: "Error: Compiling LESS.",
                 message:"<%= errorMessage %>"
             })
         }))
@@ -100,11 +102,11 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
             message: 'scss task completed.',
         }));<% } %>
 });
-<% if (useJade == true) { %>
-// Jade
 
-gulp.task('templates', function() {
-    gulp.src([routes.templates.jade, '!' + routes.templates._jade])
+// Templating
+
+gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
+    return gulp.src([routes.templates.jade, '!' + routes.templates._jade])
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Compiling Jade.",
@@ -117,10 +119,18 @@ gulp.task('templates', function() {
         .pipe(notify({
             title: 'Jade Compiled succesfully!',
             message: 'Jade task completed.',
-        }));
+        }));<% } else {%>
+    return gulp.src(routes.templates.html)
+        .pipe(minifyHTML())
+        .pipe(browserSync.stream())
+        .pipe(gulp.dest(routes.files.html))
+        .pipe(notify({
+            title: 'HTML minified succesfully!',
+            message: 'templates task completed.',
+        }));<% }%>
 });
 
-<% } %>
+
 /* Scripts (js) ES6 => ES5, minify and concat into a single file.*/
 
 gulp.task('scripts', function() {
@@ -200,8 +210,9 @@ gulp.task('browser-sync', function() {
     });
     <% if (cssPrepro=='less') { %>
     gulp.watch([routes.styles.less, routes.styles._less], ['styles']);<% } else { %>
-    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);<% } %>
-    gulp.watch([routes.templates.jade, routes.templates._jade], ['templates']);
+    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);<% } %> <% if (templateLang == 'jade') { %>
+    gulp.watch([routes.templates.jade, routes.templates._jade], ['templates']);<% } else { %>
+    gulp.watch(routes.templates.html, ['templates']);<% } %>
     gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
 });
 
