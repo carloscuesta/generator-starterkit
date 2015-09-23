@@ -27,6 +27,15 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     _projectFiles: function() {
+        var projectInfo = {
+            appname: this.appname,
+            appversion: this.appversion,
+            appdescription: this.appdescription,
+            applicense: this.applicense,
+            appauthor: this.appauthor,
+            appemail: this.appemail
+        };
+
         this.fs.copy(
             this.templatePath('editorconfig'),
             this.destinationPath('.editorconfig')
@@ -48,7 +57,7 @@ module.exports = yeoman.generators.Base.extend({
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
                 ftpDeployDir: this.ftpDeployDir,
-                errorMessage:'<%= error.message %>'
+                errorMessage:"\<%= error.message %>"
             }
         );
 
@@ -73,6 +82,15 @@ module.exports = yeoman.generators.Base.extend({
             this.templatePath('_readme.md'),
             this.destinationPath('README.md'),
             {
+                appname: this.appname,
+                appversion: this.appversion,
+                appdescription: this.appdescription,
+                applicense: this.applicense,
+                appauthor: this.appauthor,
+                appemail: this.appemail,
+                useBabel: this.useBabel,
+                templateLang: this.templateLang,
+                cssPrepro: this.cssPrepro
             }
         );
 
@@ -93,21 +111,24 @@ module.exports = yeoman.generators.Base.extend({
 
         switch(this.templateLang) {
             case 'jade':
-                this.fs.copy(
+                this.fs.copyTpl(
                     this.templatePath('templating/jade/*.jade'),
-                    this.destinationPath('src/templates/')
+                    this.destinationPath('src/templates/'),
+                    projectInfo
                 );
 
-                this.fs.copy(
+                this.fs.copyTpl(
                     this.templatePath('templating/jade/_includes/_*.jade'),
-                    this.destinationPath('src/templates/_includes/')
+                    this.destinationPath('src/templates/_includes/'),
+                    projectInfo
                 );
             break;
 
             case 'html':
-                this.fs.copy(
+                this.fs.copyTpl(
                     this.templatePath('templating/html/*.html'),
-                    this.destinationPath('src/templates/')
+                    this.destinationPath('src/templates/'),
+                    projectInfo
                 );
             break;
         }
