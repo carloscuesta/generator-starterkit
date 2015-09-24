@@ -69,7 +69,7 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Compiling LESS.",
-                message:"<%= errorMessage %>"
+                message:"<%= error.message %>"
             })
         }))
         .pipe(less({}))
@@ -86,7 +86,7 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Compiling SCSS.",
-                message:"<%= errorMessage %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(sass({
@@ -110,7 +110,7 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Compiling Jade.",
-                message:"<%= errorMessage %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(jade())
@@ -174,7 +174,7 @@ gulp.task('deploy', function() {
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Deploy failed.",
-                message:"<%= errorMessage %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(connection.dest(routes.deployDirs.ftpUploadDir))
@@ -192,7 +192,7 @@ gulp.task('beautify', function() {
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Beautify failed.",
-                message:"<%= errorMessage %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(gulp.dest(routes.scripts.base))

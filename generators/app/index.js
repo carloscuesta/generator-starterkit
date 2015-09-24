@@ -57,7 +57,6 @@ module.exports = yeoman.generators.Base.extend({
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
                 ftpDeployDir: this.ftpDeployDir,
-                errorMessage:"\<%= error.message %>"
             }
         );
 
@@ -74,7 +73,8 @@ module.exports = yeoman.generators.Base.extend({
                 useBabel: this.useBabel,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
-                useFlexboxgrid: this.useFlexboxgrid
+                useFlexboxgrid: this.useFlexboxgrid,
+                useBootstrap: this.useBootstrap
             }
         );
 
@@ -99,9 +99,12 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('src/styles/_includes')
         );
 
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('styles/'+this.cssPrepro+'/*.'+this.cssPrepro),
-            this.destinationPath('src/styles')
+            this.destinationPath('src/styles'),
+            {
+                useFlexboxgrid: this.useFlexboxgrid
+            }
         );
 
         this.fs.copy(
@@ -182,7 +185,7 @@ module.exports = yeoman.generators.Base.extend({
                     if (validEmail) {
                         return true;
                     } else {
-                        return chalk.red('Pleas enter a valid email address');
+                        return chalk.red('Please enter a valid email address');
                     }
                 }
             },
@@ -215,6 +218,22 @@ module.exports = yeoman.generators.Base.extend({
                 name: 'useBabel',
                 message: 'Would you like to use '+chalk.yellow('Babel'),
                 default: true
+            },
+            {
+                type: 'checkbox',
+                name: 'additionalPackages',
+                message: 'Would you like to use some of these packages / frameworks:',
+                choices: [
+                    {
+                        name: 'Flexboxgrid',
+                        value: 'useFlexboxgrid',
+                        checked: true
+                    },
+                    {
+                        name: 'Bootstrap',
+                        value: 'useBootstrap'
+                    }
+                ]
             },
             {
                 type: 'confirm',
@@ -280,22 +299,6 @@ module.exports = yeoman.generators.Base.extend({
                         return chalk.red('ftpRemoteDir can\'t be empty!');
                     }
                 }
-            },
-            {
-                type: 'checkbox',
-                name: 'additionalPackages',
-                message: 'Would you like to use some of these packages / frameworks:',
-                choices: [
-                    {
-                        name: 'Flexboxgrid',
-                        value: 'useFlexboxgrid',
-                        checked: true
-                    },
-                    {
-                        name: 'Bootstrap',
-                        value: 'useBootstrap'
-                    }
-                ]
             }
         ];
         return answers;
@@ -327,6 +330,18 @@ module.exports = yeoman.generators.Base.extend({
             type: Boolean,
             defaults: false
         });
+
+        this.option('skip-install-message', {
+            desc: 'Skips the message after the installation of dependencies',
+            type: Boolean,
+            default: false
+        });
+
+        this.option('skip-install', {
+            desc: 'Skips the installation of the dependencies',
+            type: Boolean,
+            default: false
+        });
     },
 
     initializing: function() {
@@ -352,7 +367,7 @@ module.exports = yeoman.generators.Base.extend({
             }
 
             this.useFlexboxgrid = hasAdditionalPackages('useFlexboxgrid');
-
+            this.useBootstrap = hasAdditionalPackages('useBootstrap');
             done();
         }.bind(this));
     },
@@ -363,6 +378,22 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
-        this.installDependencies();
+        this.installDependencies({
+            bower: false,
+            skipInstall: this.options['skip-install'],
+            skipMessage: this.options['skip-install-message'],
+            callback: function() {
+                this._end();
+                this.log('>> Running'+chalk.red(' gulp.js ')+'for you!\n');
+                this.spawnCommand('gulp');
+            }.bind(this)
+        });
+    },
+
+    _end: function() {
+        var goodBye = '\nYo! It\'s done have a great day :) '+chalk.bold.red('starterkit ')+'finished!\n';
+        if (!this.options['skip-welcome-message']){
+            this.log(goodBye);
+        }
     }
 });
