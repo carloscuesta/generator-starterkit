@@ -251,7 +251,7 @@ module.exports = yeoman.generators.Base.extend({
                     if (value!='') {
                         return true;
                     } else {
-                        return chalk.red('ftpHost can\'t be empty!');
+                        return chalk.red('The FTP host can\'t be empty!');
                     }
                 }
             },
@@ -266,7 +266,7 @@ module.exports = yeoman.generators.Base.extend({
                     if (value!='') {
                         return true;
                     } else {
-                        return chalk.red('ftpUser can\'t be empty!');
+                        return chalk.red('The FTP user can\'t be empty!');
                     }
                 }
             },
@@ -281,7 +281,7 @@ module.exports = yeoman.generators.Base.extend({
                     if (value!='') {
                         return true;
                     } else {
-                        return chalk.red('ftpPassword can\'t be empty!');
+                        return chalk.red('The FTP password can\'t be empty!');
                     }
                 }
             },
@@ -296,7 +296,7 @@ module.exports = yeoman.generators.Base.extend({
                     if (value!='') {
                         return true;
                     } else {
-                        return chalk.red('ftpRemoteDir can\'t be empty!');
+                        return chalk.red('The FTP remote directory can\'t be empty!');
                     }
                 }
             }
@@ -378,14 +378,15 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
+        var done = this.async();
         this.installDependencies({
             bower: false,
             skipInstall: this.options['skip-install'],
             skipMessage: this.options['skip-install-message'],
             callback: function() {
                 this._end();
-                this.log('>> Running'+chalk.red(' gulp.js ')+'for you!\n');
-                this.spawnCommand('gulp');
+                this.log('Run'+chalk.red(' gulp ')+'to start coding!\n');
+            //    this.spawnCommand('gulp').on('end', done);
             }.bind(this)
         });
     },
