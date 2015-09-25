@@ -27,7 +27,8 @@
     "chalk": "^1.0.0",
     "mkdirp": "^0.5.1",
     "yeoman-generator": "^0.20.3",
-    "yosay": "^1.0.2"
+    "yosay": "^1.0.2",
+    "events": "^1.0.2"
   },
   "devDependencies": {
     "mocha": "*"
