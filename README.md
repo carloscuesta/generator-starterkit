@@ -1,7 +1,7 @@
 # generator-starterkit 
 
-[![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg)](https://travis-ci.org/carloscuesta/generator-starterkit)
-[![Dependency Status](https://img.shields.io/david/carloscuesta/generator-starterkit.svg)](https://david-dm.org/carloscuesta/generator-starterkit)
+[![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg?style=flat-square)](https://travis-ci.org/carloscuesta/generator-starterkit)
+[![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
 
 ![yo-starterkit](https://cloud.githubusercontent.com/assets/7629661/10104170/6d3f83aa-63a8-11e5-9954-4a051aef344b.png)
 
