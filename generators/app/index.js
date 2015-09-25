@@ -97,7 +97,10 @@ module.exports = yeoman.generators.Base.extend({
                 appdescription: this.appdescription,
                 applicense: this.applicense,
                 appauthor: this.appauthor,
-                appemail: this.appemail
+                appemail: this.appemail,
+                useBabel: this.useBabel,
+                templateLang: this.templateLang,
+                cssPrepro: this.cssPrepro
             }
         );
 
