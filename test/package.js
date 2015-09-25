@@ -41,16 +41,14 @@ describe('starterkit:package-dependencies', function() {
                 skipInstall: true
             })
             .withPrompts({
-                useBabel: true,
-                useFlexboxgrid: true
+                useBabel: true
             })
             .on('end', done);
     });
 
     it('should contain additional dependencies', function() {
         [
-            'gulp-babel',
-            'flexboxgrid'
+            'gulp-babel'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });
