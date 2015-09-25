@@ -69,7 +69,7 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Compiling LESS.",
-                message:"<%= error.message %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(less({}))
