@@ -3,47 +3,54 @@
 [![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg)](https://travis-ci.org/carloscuesta/generator-starterkit)
 [![Dependency Status](https://img.shields.io/david/carloscuesta/generator-starterkit.svg)](https://david-dm.org/carloscuesta/generator-starterkit)
 
-> [Yeoman](http://yeoman.io) generator
+> Yeoman generator that scaffolds out my front end development [starterkit](https://github.com/carloscuesta/starterkit).
 
 ## Getting Started
 
-### What is Yeoman?
+### Requirements and Use
 
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+- [NodeJS](https://nodejs.org/en/)
+- [Yeoman](http://yeoman.io)
+- [Generator-Starterkit](https://github.com/carloscuesta/generator-starterkit)
 
 ```bash
-npm install -g yo
+$ npm install -g yo
+$ npm install -g generator-starterkit
 ```
 
-### Yeoman Generators
+### Use
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-starterkit from npm, run:
+Before running the generator you will need to **create a folder** for your project where the generator will create all the project files and directories.
 
 ```bash
-npm install -g generator-starterkit
+$ mkdir project
+$ cd project
 ```
 
-Finally, initiate the generator:
+Once you have, **NodeJS**, **Yeoman**, **generator-starterkit** installed and your project folder created you can run the generator using:
 
 ```bash
 yo starterkit
 ```
 
-### Getting To Know Yeoman
+Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions. Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies) above.) 
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+## Features
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+## Technologies
+
+- [**Gulp**](http://gulpjs.com): Automate and enhance your workflow.
+- CSS Preprocessors
+    - [**Sass**](http://sass-lang.com): CSS with superpowers.
+    - [**Less**](http://lesscss.org): Less extends CSS with dynamic behavior.
+- Templating / Markup
+    - [**Jade**](http://jade-lang.com): Templating engine.
+    - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
+- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
+
+## Options
 
 
 ## License
 
-MIT
+The code is available under the [MIT](https://github.com/carloscuesta/generator-starterkit/blob/master/LICENSE) license.
