@@ -135,6 +135,12 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
 
 gulp.task('scripts', function() {
     return gulp.src(routes.scripts.js)
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Babel and Concat failed.",
+                message:"<%= error.message %>"
+            })
+        }))
         .pipe(concat('script.js'))<% if (useBabel == true) { %>
         .pipe(babel())<% } %>
         .pipe(uglify())
