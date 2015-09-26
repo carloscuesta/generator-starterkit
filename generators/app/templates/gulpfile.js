@@ -138,7 +138,7 @@ gulp.task('scripts', function() {
         .pipe(plumber({
             errorHandler: notify.onError({
                 title: "Error: Babel and Concat failed.",
-                message:"<%= error.message %>"
+                message:"<%%= error.message %>"
             })
         }))
         .pipe(concat('script.js'))<% if (useBabel == true) { %>
