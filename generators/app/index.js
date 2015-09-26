@@ -388,7 +388,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     install: function() {
-    //    var done = this.async();
         this.installDependencies({
             bower: false,
             skipInstall: this.options['skip-install'],
@@ -396,7 +395,6 @@ module.exports = yeoman.generators.Base.extend({
             callback: function() {
                 this._end();
                 this.log('Run'+chalk.red(' gulp ')+'to start coding!\n');
-            //    this.spawnCommand('gulp').on('end', done);
             }.bind(this)
         });
     },

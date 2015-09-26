@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg?style=flat-square)](https://travis-ci.org/carloscuesta/generator-starterkit)
 [![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
+[![DevDepencies Status](https://img.shields.io/david/dev/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit#info=devDependencies)
 
 ![yo-starterkit](https://cloud.githubusercontent.com/assets/7629661/10104170/6d3f83aa-63a8-11e5-9954-4a051aef344b.png)
 
@@ -46,12 +47,28 @@ Once you have, **NodeJS**, **Yeoman**, **generator-starterkit** installed and yo
 yo starterkit
 ```
 
-_Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions. Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies) above.)_
+_Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions. 
+
+Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies) above.)_
 
 ## Features
 
+```**styles**```: [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
+```**templates**```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
+```**scripts**```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
+```**images**```: Images optimization.
+```**deploy**```: Deploying your project into a ftp server.
+```**beautify**```: Beautify preproduction files.
+```**browsersync**```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
+
+For more documentation about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
+
 ## Options
 
+- ```--skip-install```: Skips the installation of dependencies with npm.
+- ```--skip-welcome-message```: Skips the welcome message.
+- ```--skip-install-message```: Skips the message after the installation of dependencies.
+- ```--skip-cache```: o not remember prompt answers.
 
 ## License
 
