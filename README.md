@@ -36,39 +36,45 @@ $ npm install -g generator-starterkit
 
 Before running the generator you will need to **create a folder** for your project where the generator will create all the project files and directories.
 
-```bash
-$ mkdir project
-$ cd project
-```
-
 Once you have, **NodeJS**, **Yeoman**, **generator-starterkit** installed and your project folder created you can run the generator using:
 
 ```bash
-yo starterkit
+$ mkdir project
+$ cd project
+$ yo starterkit
 ```
 
-_Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions. 
+Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions.
 
-Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies) above.)_
+Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies))
+
+Before **start coding** run 
+
+```bash
+$ gulp
+```
 
 ## Features
 
-```**styles**```: [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
-```**templates**```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
-```**scripts**```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
-```**images**```: Images optimization.
-```**deploy**```: Deploying your project into a ftp server.
-```**beautify**```: Beautify preproduction files.
-```**browsersync**```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
+- ````styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
+- ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
+- ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
+- ```images```: Images optimization.
+- ```deploy```: Deploying your project into a ftp server.
+- ```beautify```: Beautify preproduction files.
+- ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
 
-For more documentation about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
+For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
 
 ## Options
 
 - ```--skip-install```: Skips the installation of dependencies with npm.
 - ```--skip-welcome-message```: Skips the welcome message.
 - ```--skip-install-message```: Skips the message after the installation of dependencies.
-- ```--skip-cache```: o not remember prompt answers.
+- ```--skip-cache```: Do not remember prompt answers.
+
+## Screenshots
+
 
 ## License
 
