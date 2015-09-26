@@ -43,7 +43,8 @@ describe('starterkit:less:dependencies', function() {
 
     it('should contain necessary less dependencies', function() {
         [
-            'gulp-less'
+            'gulp-less',
+            'gulp-minify-css'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });

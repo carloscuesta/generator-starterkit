@@ -50,11 +50,6 @@ html, body {
     flex-direction: column
 }
 
-.button, .button:hover {
-    background: $white;
-    border-color: $white
-}
-
 .button {
     position: relative;
     display: block;
@@ -63,12 +58,15 @@ html, body {
     height: 3rem;
     line-height: 3rem;
     color: $primary-bg-color;
+    background: $white;
     font-size: 1.25rem;
     transition: color, .15s
 }
 
 .button:hover {
     color: $light-blue;
+    background: $white;
+    border-color: $white
 }
 
 a {

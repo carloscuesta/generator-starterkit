@@ -79,6 +79,7 @@ describe('starterkit:gulp:packages', function() {
         [
             'gulp-less',
             'gulp-minify-html',
+            'gulp-minify-css'
         ].forEach(function(pkg) {
             assert.fileContent('gulpfile.js', pkg);
         });

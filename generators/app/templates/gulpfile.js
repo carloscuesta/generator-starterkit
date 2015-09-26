@@ -1,5 +1,6 @@
 var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
-    less = require('gulp-less'),<% } else { %>
+    less = require('gulp-less'),
+    minifyCss = require('gulp-minify-css'),<% } else { %>
     sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
     jade = require('gulp-jade'),<% } else { %>
     minifyHTML = require('gulp-minify-html'), <% } %>
@@ -73,6 +74,7 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
             })
         }))
         .pipe(less({}))
+        .pipe(minifyCss())
         .pipe(cssimport({}))
         .pipe(autoprefixer('last 3 versions'))
         .pipe(rename('style.css'))
