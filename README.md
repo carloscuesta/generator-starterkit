@@ -19,6 +19,16 @@
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
 
+## Features
+
+- ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
+- ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
+- ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
+- ```images```: Images optimization.
+- ```deploy```: Deploying your project into a ftp server.
+- ```beautify```: Beautify preproduction files.
+- ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
+
 ## Requirements and Use
 
 ### Requirements
@@ -54,16 +64,6 @@ Before **start coding** run
 $ gulp
 ```
 
-## Features
-
-- ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
-- ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
-- ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
-- ```images```: Images optimization.
-- ```deploy```: Deploying your project into a ftp server.
-- ```beautify```: Beautify preproduction files.
-- ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
-
 For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
 
 ## Options
@@ -72,6 +72,28 @@ For more information about gulp workflow / tasks go to [starterkit gulp tasks](h
 - ```--skip-welcome-message```: Skips the welcome message.
 - ```--skip-install-message```: Skips the message after the installation of dependencies.
 - ```--skip-cache```: Do not remember prompt answers.
+
+## Project Structure
+
+```
+.
+├── /dist/                   # Minified, optimized and compiled files.
+│   ├── /assets/             # Assets folder.
+│   │   ├── /css/            # CSS style files.
+│   │   ├── /files/          # Static files.
+│   │   │   └── img/         # Images folder.
+│   │   └── /js/             # JS files.
+│   └── *.html               # Minified HTML files.
+├── /node_modules/           # Node modules dependencies and packages.
+├── /src/                    # Source files.
+│   ├── /images/             # Images non compressed.
+│   ├── /scripts/            # JavaScript files.
+│   ├── /styles/             # SCSS / Less style files.
+│   │   └── _includes/       # Styles SCSS / Less partials.
+│   ├── /templates/          # Templating Jade files / Html files.
+│   │   └── _includes/       # Templating Jade partials.
+└── gulpfile.js              # Gulp automatization file.
+```
 
 ## Screenshots
 
