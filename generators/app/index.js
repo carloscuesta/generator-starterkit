@@ -6,7 +6,7 @@ var yeoman = require('yeoman-generator'),
     EventEmitter = require('events');
 
     EventEmitter.init(
-        EventEmitter.defaultMaxListeners = 30
+        EventEmitter.defaultMaxListeners = 0
     );
 
 module.exports = yeoman.generators.Base.extend({
@@ -26,7 +26,7 @@ module.exports = yeoman.generators.Base.extend({
         mkdirp(srcDir + '/images');
         mkdirp(srcDir + '/scripts');
         mkdirp(srcDir + '/styles/_includes/');
-        if (this.templateLang=='jade') {
+        if (this.templateLang==='jade') {
             mkdirp(srcDir + '/templates/_includes/');
         }
     },
@@ -75,7 +75,6 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('package.json'),
             {
                 appname: this.appname,
-                appversion: this.appversion,
                 appdescription: this.appdescription,
                 applicense: this.applicense,
                 appauthor: this.appauthor,
@@ -157,19 +156,14 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 name: 'description',
-                message: 'What is the description of your project',
+                message: 'Enter a the description for your project',
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('Enter a description, description can\'t be empty!');
                     }
                 }
-            },
-            {
-                name: 'version',
-                message: 'What is the version of your project',
-                default: '0.0.0'
             },
             {
                 name: 'license',
@@ -180,7 +174,7 @@ module.exports = yeoman.generators.Base.extend({
                 name: 'author',
                 message: 'What is your name',
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('Enter your name, name can\'t be empty.');
@@ -258,7 +252,7 @@ module.exports = yeoman.generators.Base.extend({
                     return answers.setupFTP;
                 },
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('The FTP host can\'t be empty!');
@@ -273,7 +267,7 @@ module.exports = yeoman.generators.Base.extend({
                     return answers.setupFTP;
                 },
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('The FTP user can\'t be empty!');
@@ -288,7 +282,7 @@ module.exports = yeoman.generators.Base.extend({
                     return answers.setupFTP;
                 },
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('The FTP password can\'t be empty!');
@@ -303,7 +297,7 @@ module.exports = yeoman.generators.Base.extend({
                     return answers.setupFTP;
                 },
                 validate: function(value) {
-                    if (value!='') {
+                    if (value!=='') {
                         return true;
                     } else {
                         return chalk.red('The FTP remote directory can\'t be empty!');
@@ -315,6 +309,9 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     _getAnswers: function(answers, callback) {
+        function hasAdditionalPackages (pkg) {
+            return answers.additionalPackages && answers.additionalPackages.indexOf(pkg) !== -1;
+        }
         this.appname = answers.name;
         this.appdescription = answers.description;
         this.appversion = answers.version;
@@ -329,6 +326,8 @@ module.exports = yeoman.generators.Base.extend({
         this.ftpUser = answers.ftpUser;
         this.ftpPassword = answers.ftpPassword;
         this.ftpDeployDir = answers.ftpDeployDir;
+        this.useFlexboxgrid = hasAdditionalPackages('useFlexboxgrid');
+        this.useBootstrap = hasAdditionalPackages('useBootstrap');
         callback();
     },
 
@@ -368,16 +367,7 @@ module.exports = yeoman.generators.Base.extend({
         var done = this.async();
 
         this.prompt(this._askUser(), function(answers) {
-            var packages = answers.additionalPackages;
-
             this._getAnswers(answers, done);
-
-            function hasAdditionalPackages(pkg) {
-                return packages && packages.indexOf(pkg) !== -1;
-            }
-
-            this.useFlexboxgrid = hasAdditionalPackages('useFlexboxgrid');
-            this.useBootstrap = hasAdditionalPackages('useBootstrap');
             done();
         }.bind(this));
     },

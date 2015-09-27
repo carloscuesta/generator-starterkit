@@ -1,6 +1,6 @@
 {
   "name": "<%= appname %>",
-  "version": "<%= appversion %>",
+  "version": "0.0.0",
   "description": "<%= appdescription %>",
   "license": "<%= applicense %>",
   "main": "",
