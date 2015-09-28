@@ -4,7 +4,7 @@
 [![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
 [![DevDepencies Status](https://img.shields.io/david/dev/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit#info=devDependencies)
 
-![yo-starterkit](https://cloud.githubusercontent.com/assets/7629661/10104170/6d3f83aa-63a8-11e5-9954-4a051aef344b.png)
+![starterkitheader](https://cloud.githubusercontent.com/assets/7629661/10142442/f756785c-6612-11e5-89e9-137f6244445c.png)
 
 > Yeoman generator that scaffolds out my front end development [starterkit](https://github.com/carloscuesta/starterkit).
 
