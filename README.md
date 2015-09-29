@@ -52,17 +52,14 @@ Once you have, **NodeJS**, **Yeoman**, **generator-starterkit** installed and yo
 $ mkdir project
 $ cd project
 $ yo starterkit
+$ gulp
 ```
 
 Now the [generator-starterkit](https://github.com/carloscuesta/generator-starterkit) will start to ask some questions to setup the project for you; project information, technologies and languages that you want to use and will install the dependencies automatically based on your decisions.
 
 Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies))
 
-Before **start coding** run 
-
-```bash
-$ gulp
-```
+**Don't forget to run ```gulp``` after the yeoman finishes.**
 
 For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
 
@@ -95,7 +92,7 @@ For more information about gulp workflow / tasks go to [starterkit gulp tasks](h
 └── gulpfile.js              # Gulp automatization file.
 ```
 
-## Screenshots
+## Demo
 
 
 ## License
