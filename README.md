@@ -18,6 +18,7 @@
     - [**Jade**](http://jade-lang.com): Templating engine.
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
+- [**Npm**](https://www.npmjs.com): Package manager used to install dependencies and everything you need.
 
 ## Features
 
@@ -28,6 +29,8 @@
 - ```deploy```: Deploying your project into a ftp server.
 - ```beautify```: Beautify preproduction files.
 - ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
+
+For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
 
 ## Requirements and Use
 
@@ -61,8 +64,6 @@ Also there are a lot of files being created dynamically such as gulp.js, package
 
 **Don't forget to run ```gulp``` after the yeoman finishes.**
 
-For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
-
 ## Options
 
 - ```--skip-install```: Skips the installation of dependencies with npm.
@@ -94,6 +95,7 @@ For more information about gulp workflow / tasks go to [starterkit gulp tasks](h
 
 ## Demo
 
+![yostarterkit](https://cloud.githubusercontent.com/assets/7629661/10196154/b6f349b8-6791-11e5-8620-d856e5f7f523.gif)
 
 ## License
 
