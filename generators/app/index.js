@@ -2,12 +2,7 @@
 var yeoman = require('yeoman-generator'),
     chalk = require('chalk'),
     yosay = require('yosay'),
-    mkdirp = require('mkdirp'),
-    EventEmitter = require('events');
-
-    EventEmitter.init(
-        EventEmitter.defaultMaxListeners = 0
-    );
+    mkdirp = require('mkdirp');
 
 module.exports = yeoman.generators.Base.extend({
 
