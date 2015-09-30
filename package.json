@@ -1,7 +1,7 @@
 {
   "name": "generator-starterkit",
   "version": "1.0.0",
-  "description": "Scaffold out Carlos Cuesta's starterkit.",
+  "description": "Yeoman generator that scaffolds out my front end development starterkit.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "carloscuesta/generator-starterkit",
