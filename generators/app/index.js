@@ -127,7 +127,18 @@ module.exports = yeoman.generators.Base.extend({
                 this.fs.copyTpl(
                     this.templatePath('templating/jade/_includes/_*.jade'),
                     this.destinationPath('src/templates/_includes/'),
-                    projectInfo
+                    {
+                        appname: this.appname,
+                        appdescription: this.appdescription,
+                        applicense: this.applicense,
+                        appauthor: this.appauthor,
+                        appemail: this.appemail,
+                        useBabel: this.useBabel,
+                        templateLang: this.templateLang,
+                        cssPrepro: this.cssPrepro,
+                        useFlexboxgrid: this.useFlexboxgrid,
+                        useBootstrap: this.useBootstrap
+                    }
                 );
             break;
 
@@ -135,7 +146,18 @@ module.exports = yeoman.generators.Base.extend({
                 this.fs.copyTpl(
                     this.templatePath('templating/html/*.html'),
                     this.destinationPath('src/templates/'),
-                    projectInfo
+                    {
+                        appname: this.appname,
+                        appdescription: this.appdescription,
+                        applicense: this.applicense,
+                        appauthor: this.appauthor,
+                        appemail: this.appemail,
+                        useBabel: this.useBabel,
+                        templateLang: this.templateLang,
+                        cssPrepro: this.cssPrepro,
+                        useFlexboxgrid: this.useFlexboxgrid,
+                        useBootstrap: this.useBootstrap
+                    }
                 );
             break;
         }

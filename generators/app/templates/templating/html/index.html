@@ -30,10 +30,25 @@
     </header>
     <div class="wrap container-fluid">
         <div class="starterkit-section">
+            <h3>Hello!</h3>
+            <p>Now you have:</p>
+            <ul>
+                <li>Gulp.js</li><% if (useBabel == true) { %>
+                <li>Babel</li><% } %> <% if (cssPrepro == 'less') { %>
+                <li>Less</li> <% } else { %>
+                <li>Sass</li> <% } %> <% if (templateLang == 'jade') { %>
+                <li>Jade</li> <% } else { %>
+                <li>HTML</li> <% } %> <% if (useFlexboxgrid) { %>
+                <li>Flexboxgrid</li> <% } %> <% if (useBootstrap) { %>
+                <li>Bootstrap</li> <% } %>
+            </ul>
+        <span>Enjoy Coding!</span>
+        </div>
+        <div class="starterkit-section">
             <h3>About</h3>
             <p>
-                The <b>starterkit</b> allows you to create and build awesome sites without worrying about anything else.
-                <b>The only thing you should worry about is your code</b>. Just <code>clone</code> the repository run <code>npm install</code> <code>gulp</code> and you're ready to go!. For more information about <code>gulp tasks</code> and the project, go to the <a href="https://github.com/carloscuesta/starterkit#carlos-cuesta-starter-kit">starterkit documentation</a>.</p>
+                The <b>generator-starterkit</b> allows you to create and build awesome sites without worrying about anything else.
+                <b>The only thing you should worry about is your code</b>. Just run <code>gulp</code> and you're ready to go!. For more information about <code>gulp tasks</code> and the project, go to the <a href="https://github.com/carloscuesta/starterkit#carlos-cuesta-starter-kit">starterkit documentation</a>.</p>
         </div>
         <div class="starterkit-section closing-section">
             <h3>Info</h3>

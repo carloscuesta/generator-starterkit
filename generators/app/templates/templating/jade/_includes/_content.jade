@@ -1,9 +1,23 @@
 .wrap.container-fluid
     .starterkit-section
+        h3 Hello!
+        p You now have:
+        ul
+            li Gulp.js <% if (useBabel == true) { %>
+            li Babel <% } %> <% if (cssPrepro == 'less') { %>
+            li Less <% } else { %>
+            li Sass <% } %> <% if (templateLang == 'jade') { %>
+            li Jade <% } else { %>
+            li HTML <% } %> <% if (useFlexboxgrid) { %>
+            li Flexboxgrid <% } %> <% if (useBootstrap) { %>
+            li Bootstrap <% } %>
+        span Enjoy Coding!
+
+    .starterkit-section
         h3 About
         p
-            |The <b>starterkit</b> allows you to create and build awesome sites without worrying about anything else.
-            |<b>The only thing you should worry about is your code</b>. Just <code>clone</code> the repository run <code>npm install</code> <code>gulp</code> and you're ready to go!.
+            |The <b>generator-starterkit</b> allows you to create and build awesome sites without worrying about anything else.
+            |<b>The only thing you should worry about is your code</b>. Just run <code>gulp</code> and you're ready to go!.
             |For more information about <code>gulp tasks</code> and the project, go to the <a href="https://github.com/carloscuesta/starterkit#carlos-cuesta-starter-kit">starterkit documentation</a>.
     .starterkit-section.closing-section
         h3 Info
