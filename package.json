@@ -21,7 +21,13 @@
     "starterkit-generator",
     "front-end",
     "carlos-cuesta",
-    "carlos-cuesta-starterkit"
+    "carlos-cuesta-starterkit",
+    "gulp",
+    "sass",
+    "less",
+    "babel",
+    "jade",
+    "html"
   ],
   "dependencies": {
     "chalk": "^1.1.1",

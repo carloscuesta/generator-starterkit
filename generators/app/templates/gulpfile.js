@@ -123,7 +123,12 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
             message: 'Jade task completed.',
         }));<% } else {%>
     return gulp.src(routes.templates.html)
-        .pipe(minifyHTML())
+        .pipe(minifyHTML({
+            empty:true,
+            quotes:true,
+            cdata:true,
+            conditionals:true
+        }))
         .pipe(browserSync.stream())
         .pipe(gulp.dest(routes.files.html))
         .pipe(notify({
