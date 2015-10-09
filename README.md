@@ -6,7 +6,7 @@
 [![npm version](https://img.shields.io/npm/v/generator-starterkit.svg?style=flat-square)](https://www.npmjs.com/package/generator-starterkit)
 [![GitHub release](https://img.shields.io/github/release/carloscuesta/generator-starterkit.svg?style=flat-square)](https://github.com/carloscuesta/generator-starterkit/releases)
 
-![starterkitheader](https://cloud.githubusercontent.com/assets/7629661/10142442/f756785c-6612-11e5-89e9-137f6244445c.png)
+![yeoman-starterkit](https://cloud.githubusercontent.com/assets/7629661/10394651/de6932b0-6e98-11e5-845d-8402c1766332.png)
 
 > Yeoman generator that scaffolds out my front end development [starterkit](https://github.com/carloscuesta/starterkit).
 
