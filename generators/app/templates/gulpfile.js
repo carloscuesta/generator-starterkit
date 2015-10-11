@@ -241,7 +241,7 @@ gulp.task('optimize', function() {
                 message:"<%%= error.message %>"
             })
         }))
-        .pipe(cssmin())
+        .pipe(minifyCss())
         .pipe(gulp.dest(routes.styles.css))
         .pipe(notify({
             title: 'Project Optimized!',
