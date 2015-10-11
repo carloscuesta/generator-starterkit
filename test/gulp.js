@@ -24,6 +24,7 @@ describe('starterkit:gulp-tasks', function() {
             'deploy',
             'beautify',
             'browser-sync',
+            'optimize',
             'build',
             'default',
         ].forEach(function(task) {
@@ -32,7 +33,40 @@ describe('starterkit:gulp-tasks', function() {
     });
 });
 
-describe('starterkit:gulp:packages', function() {
+describe('starterkit:gulp-default:packages', function() {
+
+    before(function(done) {
+        helpers.run(path.join(__dirname, '../generators/app'))
+            .inDir(path.join(__dirname, './.tmp'))
+            .withOptions({
+                skipInstall: true
+            })
+            .on('end', done);
+    });
+
+    it('should contain default gulp default packages', function() {
+        [
+            'gulp',
+            'gulp-concat',
+            'browser-sync',
+            'gulp-plumber',
+            'gulp-notify',
+            'gulp-imagemin',
+            'gulp-rename',
+            'gulp-autoprefixer',
+            'gulp-uglify',
+            'vinyl-ftp',
+            'gulp-beautify',
+            'gulp-uncss',
+            'gulp-minify-css',
+            'gulp-beautify'
+        ].forEach(function(pkg) {
+            assert.fileContent('gulpfile.js', pkg);
+        });
+    });
+});
+
+describe('starterkit:gulp-args:packages', function() {
 
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
@@ -48,7 +82,7 @@ describe('starterkit:gulp:packages', function() {
             .on('end', done);
     });
 
-    it('should contain necessary gulp packages', function() {
+    it('should contain necessary gulp packages (args:sass, babel, jade)', function() {
         [
             'gulp-sass',
             'gulp-babel',
@@ -59,7 +93,7 @@ describe('starterkit:gulp:packages', function() {
     });
 });
 
-describe('starterkit:gulp:packages', function() {
+describe('starterkit:gulp-args:packages', function() {
 
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
@@ -75,11 +109,10 @@ describe('starterkit:gulp:packages', function() {
             .on('end', done);
     });
 
-    it('should contain necessary gulp packages', function() {
+    it('should contain necessary gulp packages (args:less, html, no babel)', function() {
         [
             'gulp-less',
-            'gulp-minify-html',
-            'gulp-minify-css'
+            'gulp-minify-html'
         ].forEach(function(pkg) {
             assert.fileContent('gulpfile.js', pkg);
         });

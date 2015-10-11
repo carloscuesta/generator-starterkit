@@ -28,6 +28,8 @@ describe('starterkit:package-dependencies', function() {
             'gulp-plumber',
             'gulp-rename',
             'gulp-uglify',
+            'gulp-minify-css',
+            'gulp-uncss',
             'vinyl-ftp'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);

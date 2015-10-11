@@ -31,6 +31,7 @@
 - ```deploy```: Deploying your project into a ftp server.
 - ```beautify```: Beautify preproduction files.
 - ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
+- ```optimize```: Automatically autoptimize your project using uncss. To improve your page speed.
 
 For more information about gulp workflow / tasks go to [starterkit gulp tasks](https://github.com/carloscuesta/starterkit#tasks)
 
