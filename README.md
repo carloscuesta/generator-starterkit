@@ -98,7 +98,7 @@ Also there are a lot of files being created dynamically such as gulp.js, package
 
 ## Demo
 
-![yostarterkit](https://cloud.githubusercontent.com/assets/7629661/10196154/b6f349b8-6791-11e5-8620-d856e5f7f523.gif)
+![yostarterkit](https://cloud.githubusercontent.com/assets/7629661/10416911/2c8d9600-702b-11e5-9724-087666e1c81b.gif)
 
 ## License
 
