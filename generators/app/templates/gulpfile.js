@@ -101,7 +101,7 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
         .pipe(browserSync.stream())
         .pipe(notify({
             title: 'SCSS Compiled and Minified succesfully!',
-            message: 'scss task completed.',
+            message: 'scss task completed.'
         }));<% } %>
 });
 
@@ -120,7 +120,7 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
         .pipe(browserSync.stream())
         .pipe(notify({
             title: 'Jade Compiled succesfully!',
-            message: 'Jade task completed.',
+            message: 'Jade task completed.'
         }));<% } else {%>
     return gulp.src(routes.templates.html)
         .pipe(minifyHTML({
@@ -133,7 +133,7 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
         .pipe(gulp.dest(routes.files.html))
         .pipe(notify({
             title: 'HTML minified succesfully!',
-            message: 'templates task completed.',
+            message: 'templates task completed.'
         }));<% }%>
 });
 
@@ -155,7 +155,7 @@ gulp.task('scripts', function() {
         .pipe(browserSync.stream())
         .pipe(notify({
             title: 'JavaScript Minified and Concatenated!',
-            message: 'your js files has been minified and concatenated.',
+            message: 'your js files has been minified and concatenated.'
         }));
 });
 
@@ -164,11 +164,7 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
     gulp.src(routes.files.images)
         .pipe(imagemin())
-        .pipe(gulp.dest(routes.files.imgmin))
-        .pipe(notify({
-            title: 'Images optimized!',
-            message: 'your images has been compressed.',
-        }));
+        .pipe(gulp.dest(routes.files.imgmin));
 });
 
 /* Deploy, deploy dist/ files to an ftp server */
@@ -193,7 +189,7 @@ gulp.task('deploy', function() {
         .pipe(connection.dest(routes.deployDirs.ftpUploadDir))
         .pipe(notify({
             title: 'Deploy succesful!',
-            message: 'Your deploy has been done!.',
+            message: 'Your deploy has been done!.'
         }));
 });
 
@@ -211,7 +207,7 @@ gulp.task('beautify', function() {
         .pipe(gulp.dest(routes.scripts.base))
         .pipe(notify({
             title: 'JS Beautified!',
-            message: 'beautify task completed.',
+            message: 'beautify task completed.'
         }));
 });
 
