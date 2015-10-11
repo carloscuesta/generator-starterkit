@@ -1,6 +1,6 @@
 {
   "name": "generator-starterkit",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Yeoman generator that scaffolds out my front end development starterkit.",
   "license": "MIT",
   "main": "app/index.js",
@@ -19,15 +19,16 @@
   "keywords": [
     "yeoman-generator",
     "starterkit-generator",
-    "front-end",
-    "carlos-cuesta",
-    "carlos-cuesta-starterkit",
+    "front end",
+    "carlos cuesta",
+    "carlos cuesta starterkit",
     "gulp",
     "sass",
     "less",
     "babel",
     "jade",
-    "html"
+    "html",
+    "starterkit"
   ],
   "dependencies": {
     "chalk": "^1.1.1",
