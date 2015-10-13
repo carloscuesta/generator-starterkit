@@ -30,7 +30,8 @@ describe('starterkit:package-dependencies', function() {
             'gulp-uglify',
             'gulp-minify-css',
             'gulp-uncss',
-            'vinyl-ftp'
+            'vinyl-ftp',
+            'gulp-sourcemaps'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });

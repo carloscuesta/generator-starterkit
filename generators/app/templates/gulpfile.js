@@ -16,7 +16,8 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     ftp = require('vinyl-ftp'),<% if (useBabel == true) { %>
     babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
-    beautify = require('gulp-beautify');
+    beautify = require('gulp-beautify'),
+    sourcemaps = require('gulp-sourcemaps');
 
 /* baseDirs: baseDirs for the project */
 
@@ -112,10 +113,12 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
                 message:"<%%= error.message %>"
             })
         }))
-        .pipe(less({}))
-        .pipe(minifyCss())
+        .pipe(sourcemaps.init())
+            .pipe(less({}))
+            .pipe(autoprefixer('last 3 versions'))
+            .pipe(minifyCss())
+        .pipe(sourcemaps.write())
         .pipe(cssimport({}))
-        .pipe(autoprefixer('last 3 versions'))
         .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
         .pipe(browserSync.stream())
@@ -130,11 +133,13 @@ gulp.task('styles', function() {<% if (cssPrepro == 'less') { %>
                 message:"<%%= error.message %>"
             })
         }))
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }))
+        .pipe(sourcemaps.init())
+            .pipe(sass({
+                outputStyle: 'compressed'
+            }))
+            .pipe(autoprefixer('last 3 versions'))
+        .pipe(sourcemaps.write())
         .pipe(cssimport({}))
-        .pipe(autoprefixer('last 3 versions'))
         .pipe(rename('style.css'))
         .pipe(gulp.dest(routes.styles.css))
         .pipe(browserSync.stream())
@@ -154,9 +159,11 @@ gulp.task('scripts', function() {
                 message:"<%%= error.message %>"
             })
         }))
-        .pipe(concat('script.js'))<% if (useBabel == true) { %>
-        .pipe(babel())<% } %>
-        .pipe(uglify())
+        .pipe(sourcemaps.init())
+            .pipe(concat('script.js'))<% if (useBabel == true) { %>
+            .pipe(babel())<% } %>
+            .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(routes.scripts.jsmin))
         .pipe(browserSync.stream())
         .pipe(notify({
@@ -175,7 +182,7 @@ gulp.task('images', function() {
 
 /* Deploy, deploy dist/ files to an ftp server */
 
-gulp.task('deploy', function() {
+gulp.task('ftp', function() {
     var connection = ftp.create({
         host: ftpCredentials.host,
         user: ftpCredentials.user,
@@ -219,7 +226,7 @@ gulp.task('beautify', function() {
 
 /* Serving (browserSync) and watching for changes in files */
 
-gulp.task('browser-sync', function() {
+gulp.task('serve', function() {
     browserSync.init({
         server: './dist/'
     });
@@ -233,7 +240,7 @@ gulp.task('browser-sync', function() {
 
 /* Optimize your project */
 
-gulp.task('optimize', function() {
+gulp.task('uncss', function() {
     return gulp.src(routes.files.cssFiles)
         .pipe(uncss({
             html:[routes.files.htmlFiles],
@@ -253,9 +260,15 @@ gulp.task('optimize', function() {
         }));
 });
 
-gulp.task('build', ['templates', 'styles', 'scripts', 'images', 'browser-sync']);
+gulp.task('dev', ['templates', 'styles', 'scripts', 'images', 'serve']);
+
+gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
+
+gulp.task('optimize', ['uncss', 'images']);
+
+gulp.task('deploy', ['optimize', 'ftp']);
 
 gulp.task('default', function() {
-    gulp.start('build');
+    gulp.start('dev');
 });
 

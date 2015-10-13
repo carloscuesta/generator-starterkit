@@ -21,11 +21,14 @@ describe('starterkit:gulp-tasks', function() {
             'templates',
             'scripts',
             'images',
-            'deploy',
+            'ftp',
             'beautify',
-            'browser-sync',
+            'serve',
+            'uncss',
             'optimize',
             'build',
+            'dev',
+            'deploy',
             'default',
         ].forEach(function(task) {
             assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
@@ -59,7 +62,8 @@ describe('starterkit:gulp-default:packages', function() {
             'gulp-beautify',
             'gulp-uncss',
             'gulp-minify-css',
-            'gulp-beautify'
+            'gulp-beautify',
+            'gulp-sourcemaps'
         ].forEach(function(pkg) {
             assert.fileContent('gulpfile.js', pkg);
         });

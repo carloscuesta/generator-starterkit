@@ -24,9 +24,9 @@
 
 ## Features
 
-- ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing and minifiying.
+- ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
 - ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
-- ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io) and minifiying.
+- ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
 - ```images```: Images optimization.
 - ```deploy```: Deploying your project into a ftp server.
 - ```beautify```: Beautify preproduction files.
