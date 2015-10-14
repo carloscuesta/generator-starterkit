@@ -107,7 +107,8 @@ module.exports = yeoman.generators.Base.extend({
             this.templatePath('styles/'+this.cssPrepro+'/*.'+this.cssPrepro),
             this.destinationPath('src/styles'),
             {
-                useFlexboxgrid: this.useFlexboxgrid
+                useFlexboxgrid: this.useFlexboxgrid,
+                useBootstrap: this.useBootstrap
             }
         );
 
