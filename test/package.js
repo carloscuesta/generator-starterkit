@@ -31,7 +31,8 @@ describe('starterkit:package-dependencies', function() {
             'gulp-minify-css',
             'gulp-uncss',
             'vinyl-ftp',
-            'gulp-sourcemaps'
+            'gulp-sourcemaps',
+            'critical'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });

@@ -25,6 +25,7 @@ describe('starterkit:gulp-tasks', function() {
             'beautify',
             'serve',
             'uncss',
+            'critical',
             'optimize',
             'build',
             'dev',
@@ -63,7 +64,8 @@ describe('starterkit:gulp-default:packages', function() {
             'gulp-uncss',
             'gulp-minify-css',
             'gulp-beautify',
-            'gulp-sourcemaps'
+            'gulp-sourcemaps',
+            'critical'
         ].forEach(function(pkg) {
             assert.fileContent('gulpfile.js', pkg);
         });

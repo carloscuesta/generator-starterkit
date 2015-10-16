@@ -17,13 +17,15 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    critical = require('critical').stream;
 
-/* baseDirs: baseDirs for the project */
+//* baseDirs: baseDirs for the project */
 
 var baseDirs = {
     dist:'dist/',
-    src:'src/'
+    src:'src/',
+    assets: 'dist/assets/'
 };
 
 /* routes: object that contains the paths */
@@ -32,7 +34,7 @@ var routes = {
     styles: {
         scss: baseDirs.src+'styles/*.scss',
         _scss: baseDirs.src+'styles/_includes/*.scss',
-        css: baseDirs.dist+'assets/css/'
+        css: baseDirs.assets+'css/'
     },
 
     templates: {
@@ -43,15 +45,16 @@ var routes = {
     scripts: {
         base:baseDirs.src+'scripts/',
         js: baseDirs.src+'scripts/*.js',
-        jsmin: baseDirs.dist+'assets/js/'
+        jsmin: baseDirs.assets+'js/'
     },
 
     files: {
         html: 'dist/',
         images: baseDirs.src+'images/*',
-        imgmin: baseDirs.dist+'assets/files/img/',
-        cssFiles: baseDirs.dist+'assets/css/*.css',
-        htmlFiles: baseDirs.dist+'*.html'
+        imgmin: baseDirs.assets+'files/img/',
+        cssFiles: baseDirs.assets+'css/*.css',
+        htmlFiles: baseDirs.dist+'*.html',
+        styleCss: baseDirs.assets+'css/style.css'
     },
 
     deployDirs: {
@@ -60,7 +63,6 @@ var routes = {
         ftpUploadDir: 'FTP-DIRECTORY'
     }
 };
-
 /* ftpCredentials: info used to deploy @ ftp server */
 
 var ftpCredentials = {
@@ -260,11 +262,37 @@ gulp.task('uncss', function() {
         }));
 });
 
+/* Extract CSS critical-path */
+
+gulp.task('critical', function () {
+    return gulp.src(routes.files.htmlFiles)
+        .pipe(critical({
+            base: baseDirs.dist,
+            inline: true,
+            html: routes.files.htmlFiles,
+            css: routes.files.styleCss,
+            ignore: ['@font-face',/url\(/],
+            width: 1300,
+            height: 900
+        }))
+        .pipe(plumber({
+            errorHandler: notify.onError({
+                title: "Error: Critical failed.",
+                message:"<%%= error.message %>"
+            })
+        }))
+        .pipe(gulp.dest(baseDirs.dist))
+        .pipe(notify({
+            title: 'Critical Path completed!',
+            message: 'css critical path done!'
+        }));
+});
+
 gulp.task('dev', ['templates', 'styles', 'scripts', 'images', 'serve']);
 
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 
-gulp.task('optimize', ['uncss', 'images']);
+gulp.task('optimize', ['uncss', 'critical', 'images']);
 
 gulp.task('deploy', ['optimize', 'ftp']);
 
