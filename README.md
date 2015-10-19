@@ -2,9 +2,9 @@
 
 [![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg?style=flat-square)](https://travis-ci.org/carloscuesta/generator-starterkit)
 [![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
-[![DevDepencies Status](https://img.shields.io/david/dev/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit#info=devDependencies)
 [![npm version](https://img.shields.io/npm/v/generator-starterkit.svg?style=flat-square)](https://www.npmjs.com/package/generator-starterkit)
-[![GitHub release](https://img.shields.io/github/release/carloscuesta/generator-starterkit.svg?style=flat-square)](https://github.com/carloscuesta/generator-starterkit/releases)
+[![npm-downloads](https://img.shields.io/npm/dt/generator-starterkit.svg?style=flat-square)](http://npmjs.com/package/generator-starterkit)
+
 
 ![yeoman-starterkit](https://cloud.githubusercontent.com/assets/7629661/10394651/de6932b0-6e98-11e5-845d-8402c1766332.png)
 
