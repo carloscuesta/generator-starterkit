@@ -65,7 +65,7 @@ Now the [generator-starterkit](https://github.com/carloscuesta/generator-starter
 
 Also there are a lot of files being created dynamically such as gulp.js, package.json, readme.md, styles and templates to match the technologies and options that you choose from the generator. (See the [technologies available](https://github.com/carloscuesta/generator-starterkit#technologies))
 
-**Don't forget to run ```gulp``` after the yeoman finishes.**
+**Don't forget to run ```gulp``` after the yeoman finishes.** Also you can use **```npm run```** to list the gulp tasks available and running them using for example ```npm run dev``` will run the default gulp task.
 
 ## Options
 

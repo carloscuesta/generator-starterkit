@@ -11,6 +11,10 @@
     "url": ""
   },
   "scripts": {
+    "dev": "gulp",
+    "build": "gulp build",
+    "optimize": "gulp optimize",
+    "deploy": "gulp deploy",
     "test": "mocha"
   },
   "keywords": [
