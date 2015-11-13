@@ -1,7 +1,7 @@
 {
   "name": "generator-starterkit",
-  "version": "1.1.7",
-  "description": "Yeoman generator that scaffolds out my front end development starterkit.",
+  "version": "1.1.8",
+  "description": "Yeoman generator that scaffolds out a front end development starterkit.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "carloscuesta/generator-starterkit",
@@ -30,7 +30,8 @@
     "jade",
     "html",
     "critical",
-    "web"
+    "web",
+    "jshint"
   ],
   "dependencies": {
     "chalk": "^1.1.1",
