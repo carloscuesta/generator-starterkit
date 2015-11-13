@@ -4,7 +4,7 @@ var path = require('path'),
     assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
-describe('starterkit:package-dependencies', function() {
+describe('starterkit:package.json', function() {
 
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
@@ -12,10 +12,14 @@ describe('starterkit:package-dependencies', function() {
             .withOptions({
                 skipInstall: true
             })
+            .withPrompts({
+                useBabel: true,
+                useJshint: true
+            })
             .on('end', done);
     });
 
-    it('should contain necessary dependencies', function() {
+    it('should contain default dependencies', function() {
         [
             'browser-sync',
             'gulp',
@@ -38,21 +42,10 @@ describe('starterkit:package-dependencies', function() {
         });
     });
 
-    before(function(done) {
-        helpers.run(path.join(__dirname, '../generators/app'))
-            .inDir(path.join(__dirname, './.tmp'))
-            .withOptions({
-                skipInstall: true
-            })
-            .withPrompts({
-                useBabel: true
-            })
-            .on('end', done);
-    });
-
     it('should contain additional dependencies', function() {
         [
-            'gulp-babel'
+            'gulp-babel',
+            'gulp-jshint'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });

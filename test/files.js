@@ -6,7 +6,7 @@ var path = require('path'),
 
 /* baseFiles: files created by default */
 
-describe('starterkit', function() {
+describe('starterkit:files', function() {
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
             .withOptions({
@@ -15,7 +15,7 @@ describe('starterkit', function() {
             .on('end', done);
     });
 
-    it('creates base expected files', function() {
+    it('creates default files', function() {
         assert.file([
             'package.json',
             '.editorconfig',

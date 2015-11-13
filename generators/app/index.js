@@ -58,6 +58,7 @@ module.exports = yeoman.generators.Base.extend({
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
+                useJshint: this.useJshint,
                 ftpHost: this.ftpHost,
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
@@ -75,6 +76,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
+                useJshint: this.useJshint,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useFlexboxgrid: this.useFlexboxgrid,
@@ -93,6 +95,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
+                useJshint: this.useJshint,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro
             }
@@ -242,6 +245,12 @@ module.exports = yeoman.generators.Base.extend({
                 default: true
             },
             {
+                type: 'confirm',
+                name: 'useJshint',
+                message: 'Would you like to use '+chalk.yellow('JSHint'),
+                default: false
+            },
+            {
                 type: 'checkbox',
                 name: 'additionalPackages',
                 message: 'Would you like to use some of these packages / frameworks:',
@@ -339,6 +348,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templateLang = answers.templateLang;
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
+        this.useJshint = answers.useJshint;
         this.setupFTP = answers.setupFTP;
         this.ftpHost = answers.ftpHost;
         this.ftpUser = answers.ftpUser;

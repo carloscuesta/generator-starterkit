@@ -32,7 +32,8 @@
     "gulp-imagemin": "^2.4.0",<% if (templateLang == 'jade') { %>
     "gulp-jade": "^1.1.0",<% } else { %>
     "gulp-minify-html": "1.0.4", <% } %>
-    "gulp-minify-css": "^1.2.1",
+    "gulp-minify-css": "^1.2.1",<% if (useJshint == true) { %>
+    "gulp-jshint": "^1.12.0", <% } %>
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",<% if (cssPrepro == 'less') { %>

@@ -4,7 +4,7 @@ var path = require('path'),
     assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
-describe('starterkit:gulp-tasks', function() {
+describe('starterkit:gulp', function() {
 
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
@@ -15,7 +15,7 @@ describe('starterkit:gulp-tasks', function() {
             .on('end', done);
     });
 
-    it('should contain necessary tasks', function() {
+    it('should contain default tasks', function() {
         [
             'styles',
             'templates',
@@ -35,9 +35,6 @@ describe('starterkit:gulp-tasks', function() {
             assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
         });
     });
-});
-
-describe('starterkit:gulp-default:packages', function() {
 
     before(function(done) {
         helpers.run(path.join(__dirname, '../generators/app'))
@@ -48,7 +45,7 @@ describe('starterkit:gulp-default:packages', function() {
             .on('end', done);
     });
 
-    it('should contain default gulp default packages', function() {
+    it('should contain default requires/imports', function() {
         [
             'gulp',
             'gulp-concat',
@@ -70,57 +67,62 @@ describe('starterkit:gulp-default:packages', function() {
             assert.fileContent('gulpfile.js', pkg);
         });
     });
-});
 
-describe('starterkit:gulp-args:packages', function() {
+    describe('when using sass, babel, jade and jshint', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        cssPrepro: 'sass',
+        	        useBabel: true,
+        	        templateLang: 'jade',
+        	        useJshint: true
+        	    })
+        	    .on('end', done);
+    	});
 
-    before(function(done) {
-        helpers.run(path.join(__dirname, '../generators/app'))
-            .inDir(path.join(__dirname, './.tmp'))
-            .withOptions({
-                skipInstall: true
-            })
-            .withPrompts({
-                cssPrepro: 'sass',
-                useBabel: true,
-                templateLang: 'jade'
-            })
-            .on('end', done);
+    	it('should contain additional packages', function() {
+    	    [
+    	        'gulp-sass',
+    	        'gulp-babel',
+    	        'gulp-jade',
+    	        'gulp-jshint'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
+
+    	it('should contain lint task', function() {
+        	['lint'].forEach(function(task) {
+            	assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
+        	});
+    	});
     });
 
-    it('should contain necessary gulp packages (args:sass, babel, jade)', function() {
-        [
-            'gulp-sass',
-            'gulp-babel',
-            'gulp-jade'
-        ].forEach(function(pkg) {
-            assert.fileContent('gulpfile.js', pkg);
-        });
-    });
-});
+    describe('when using less and html', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        cssPrepro: 'less',
+        	        templateLang: 'html'
+        	    })
+        	    .on('end', done);
+    	});
 
-describe('starterkit:gulp-args:packages', function() {
-
-    before(function(done) {
-        helpers.run(path.join(__dirname, '../generators/app'))
-            .inDir(path.join(__dirname, './.tmp'))
-            .withOptions({
-                skipInstall: true
-            })
-            .withPrompts({
-                cssPrepro: 'less',
-                useBabel: false,
-                templateLang: 'html'
-            })
-            .on('end', done);
-    });
-
-    it('should contain necessary gulp packages (args:less, html, no babel)', function() {
-        [
-            'gulp-less',
-            'gulp-minify-html'
-        ].forEach(function(pkg) {
-            assert.fileContent('gulpfile.js', pkg);
-        });
+    	it('should contain additional packages', function() {
+    	    [
+    	        'gulp-less',
+    	        'gulp-minify-html'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
     });
 });
