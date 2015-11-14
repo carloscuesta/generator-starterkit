@@ -6,9 +6,9 @@
 [![npm-downloads](https://img.shields.io/npm/dt/generator-starterkit.svg?style=flat-square)](http://npmjs.com/package/generator-starterkit)
 
 
-![yeoman-starterkit](https://cloud.githubusercontent.com/assets/7629661/10394651/de6932b0-6e98-11e5-845d-8402c1766332.png)
+![yeoman-starterkit](https://cloud.githubusercontent.com/assets/7629661/11163398/ca52709c-8acd-11e5-88da-8256ab5b6fa0.png)
 
-> Yeoman generator that scaffolds out my front end development [starterkit](https://github.com/carloscuesta/starterkit).
+> Yeoman generator that scaffolds out a front end development [starterkit](https://github.com/carloscuesta/starterkit).
 
 ## Technologies
 
@@ -27,6 +27,7 @@
 - ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
 - ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
+- ```lint```: Lint your JavaScript files using [JSHint](http://jshint.com/about).
 - ```images```: Images optimization.
 - ```deploy```: Deploying your project into a ftp server.
 - ```beautify```: Beautify preproduction files.
