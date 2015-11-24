@@ -15,7 +15,7 @@ module.exports = yeoman.generators.Base.extend({
         mkdirp(distDir);
         mkdirp(assetsDir + '/css');
         mkdirp(assetsDir + '/js');
-        mkdirp(assetsDir + '/files/images');
+        mkdirp(assetsDir + '/files/img');
 
         mkdirp(srcDir);
         mkdirp(srcDir + '/images');
