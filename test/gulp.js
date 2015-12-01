@@ -100,6 +100,16 @@ describe('starterkit:gulp', function() {
             	assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
         	});
     	});
+
+    	it('should contain route paths', function() {
+    	    [
+    	        '_scss',
+    	        'css',
+    	        '_jade'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
     });
 
     describe('when using less and html', function () {
@@ -120,6 +130,15 @@ describe('starterkit:gulp', function() {
     	    [
     	        'gulp-less',
     	        'gulp-minify-html'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
+
+    	it('should contain route paths', function() {
+    	    [
+    	        '_less',
+    	        'html'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);
     	    });

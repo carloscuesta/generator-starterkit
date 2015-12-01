@@ -33,14 +33,17 @@ var baseDirs = {
 
 var routes = {
     styles: {
+<% if (cssPrepro == 'less') { %>less: baseDirs.src+'styles/*.less',
+        _less: baseDirs.src+'styles/_includes/*.less',<% } else { %>
         scss: baseDirs.src+'styles/*.scss',
-        _scss: baseDirs.src+'styles/_includes/*.scss',
+        _scss: baseDirs.src+'styles/_includes/*.scss',<% } %>
         css: baseDirs.assets+'css/'
     },
 
     templates: {
-        jade: baseDirs.src+'templates/*.jade',
-        _jade: baseDirs.src+'templates/_includes/*.jade'
+<% if (templateLang == 'jade') { %>jade: baseDirs.src+'templates/*.jade',
+        _jade: baseDirs.src+'templates/_includes/*.jade',<% } else { %>
+        html: baseDirs.src+'templates/*.html'<% } %>
     },
 
     scripts: {
