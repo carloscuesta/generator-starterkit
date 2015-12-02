@@ -68,7 +68,7 @@ describe('starterkit:gulp', function() {
         });
     });
 
-    describe('when using sass, babel, jade and jshint', function () {
+    describe('when using sass, babel, jade and jscs', function () {
     	before(function(done) {
         	helpers.run(path.join(__dirname, '../generators/app'))
         	    .inDir(path.join(__dirname, './.tmp'))
@@ -79,7 +79,7 @@ describe('starterkit:gulp', function() {
         	        cssPrepro: 'sass',
         	        useBabel: true,
         	        templateLang: 'jade',
-        	        useJshint: true
+        	        useJSCS: true
         	    })
         	    .on('end', done);
     	});
@@ -89,7 +89,7 @@ describe('starterkit:gulp', function() {
     	        'gulp-sass',
     	        'gulp-babel',
     	        'gulp-jade',
-    	        'gulp-jshint'
+    	        'gulp-jscs'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);
     	    });

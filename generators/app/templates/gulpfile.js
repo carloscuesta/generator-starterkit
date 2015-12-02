@@ -2,8 +2,8 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     less = require('gulp-less'),<% } else { %>
     sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
     jade = require('gulp-jade'),<% } else { %>
-    minifyHTML = require('gulp-minify-html'), <% } if (useJshint == true) {%>
-    jshint = require('gulp-jshint'),<% } %>
+    minifyHTML = require('gulp-minify-html'), <% } if (useJSCS == true) {%>
+    jshint = require('gulp-jscs'),<% } %>
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),
     plumber = require('gulp-plumber'),
@@ -32,16 +32,16 @@ var baseDirs = {
 /* routes: object that contains the paths */
 
 var routes = {
-    styles: {
-<% if (cssPrepro == 'less') { %>less: baseDirs.src+'styles/*.less',
+    styles: {<% if (cssPrepro == 'less') { %>
+ 		less: baseDirs.src+'styles/*.less',
         _less: baseDirs.src+'styles/_includes/*.less',<% } else { %>
         scss: baseDirs.src+'styles/*.scss',
         _scss: baseDirs.src+'styles/_includes/*.scss',<% } %>
         css: baseDirs.assets+'css/'
     },
 
-    templates: {
-<% if (templateLang == 'jade') { %>jade: baseDirs.src+'templates/*.jade',
+    templates: {<% if (templateLang == 'jade') { %>
+    	jade: baseDirs.src+'templates/*.jade',
         _jade: baseDirs.src+'templates/_includes/*.jade',<% } else { %>
         html: baseDirs.src+'templates/*.html'<% } %>
     },
@@ -177,7 +177,7 @@ gulp.task('scripts', function() {
             message: 'your js files has been minified and concatenated.'
         }));
 });
-<% if (useJshint == true) {%>
+<% if (useJSCS == true) {%>
 /* Lint, lint the JavaScript files */
 
 gulp.task('lint', function() {
@@ -303,7 +303,7 @@ gulp.task('critical', function () {
         }));
 });
 
-gulp.task('dev', ['templates', 'styles', 'scripts',<% if (useJshint==true){ %>'lint',<%}%>'images', 'serve']);
+gulp.task('dev', ['templates', 'styles', 'scripts',<% if (useJSCS==true){ %>'lint',<%}%>'images', 'serve']);
 
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 

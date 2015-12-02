@@ -1,4 +1,5 @@
 'use strict';
+
 var yeoman = require('yeoman-generator'),
     chalk = require('chalk'),
     yosay = require('yosay'),
@@ -46,10 +47,12 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('.gitignore')
         );
 
-        this.fs.copy(
-            this.templatePath('jshintrc'),
-            this.destinationPath('.jshintrc')
-        );
+        if (this.useJSCS===true) {
+	        this.fs.copy(
+	            this.templatePath('jscsrc'),
+	            this.destinationPath('.jscsrc')
+	        );
+    	}
 
         this.fs.copyTpl(
             this.templatePath('gulpfile.js'),
@@ -58,7 +61,7 @@ module.exports = yeoman.generators.Base.extend({
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
-                useJshint: this.useJshint,
+                useJSCS: this.useJSCS,
                 ftpHost: this.ftpHost,
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
@@ -76,7 +79,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
-                useJshint: this.useJshint,
+                useJSCS: this.useJSCS,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useFlexboxgrid: this.useFlexboxgrid,
@@ -246,9 +249,30 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 type: 'confirm',
-                name: 'useJshint',
-                message: 'Would you like to use '+chalk.yellow('JSHint'),
-                default: false
+                name: 'useJSCS',
+                message: 'Would you like to use '+chalk.yellow('JSCS')
+            },
+            {
+                type: 'list',
+                name: 'cssPrepro',
+                message: 'Choose a '+chalk.yellow('JSCS styleguide'),
+                choices: [{
+                    name: 'Google',
+                    value: 'google'
+                }, {
+                    name: 'Airbnb',
+                    value: 'airbnb'
+                }],
+                when: function (answers) {
+                    return answers.useJSCS;
+                },
+                validate: function(value) {
+                    if (value!=='') {
+                        return true;
+                    } else {
+                        return chalk.red('You must select one JSCS styleguide!');
+                    }
+                }
             },
             {
                 type: 'checkbox',
@@ -348,7 +372,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templateLang = answers.templateLang;
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
-        this.useJshint = answers.useJshint;
+        this.useJSCS = answers.useJSCS;
         this.setupFTP = answers.setupFTP;
         this.ftpHost = answers.ftpHost;
         this.ftpUser = answers.ftpUser;

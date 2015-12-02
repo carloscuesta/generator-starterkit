@@ -19,7 +19,6 @@ describe('starterkit:files', function() {
         assert.file([
             'package.json',
             '.editorconfig',
-            '.jshintrc',
             'README.md',
             'gulpfile.js',
             '.gitignore'

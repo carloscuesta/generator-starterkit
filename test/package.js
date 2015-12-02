@@ -14,7 +14,7 @@ describe('starterkit:package.json', function() {
             })
             .withPrompts({
                 useBabel: true,
-                useJshint: true
+                useJSCS: true
             })
             .on('end', done);
     });
@@ -45,7 +45,7 @@ describe('starterkit:package.json', function() {
     it('should contain additional dependencies', function() {
         [
             'gulp-babel',
-            'gulp-jshint'
+            'gulp-jscs'
         ].forEach(function(dependency) {
             assert.fileContent('package.json', dependency);
         });
