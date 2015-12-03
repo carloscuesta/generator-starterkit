@@ -79,7 +79,7 @@ describe('starterkit:gulp', function() {
         	        cssPrepro: 'sass',
         	        useBabel: true,
         	        templateLang: 'jade',
-        	        useJSCS: true
+        	        jsLinter: 'jscs'
         	    })
         	    .on('end', done);
     	});
@@ -112,7 +112,7 @@ describe('starterkit:gulp', function() {
     	});
     });
 
-    describe('when using less and html', function () {
+    describe('when using less, html and jshint', function () {
     	before(function(done) {
         	helpers.run(path.join(__dirname, '../generators/app'))
         	    .inDir(path.join(__dirname, './.tmp'))
@@ -121,7 +121,8 @@ describe('starterkit:gulp', function() {
         	    })
         	    .withPrompts({
         	        cssPrepro: 'less',
-        	        templateLang: 'html'
+        	        templateLang: 'html',
+        	        jsLinter: 'jshint'
         	    })
         	    .on('end', done);
     	});
@@ -129,7 +130,8 @@ describe('starterkit:gulp', function() {
     	it('should contain additional packages', function() {
     	    [
     	        'gulp-less',
-    	        'gulp-minify-html'
+    	        'gulp-minify-html',
+    	        'gulp-jshint'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);
     	    });

@@ -47,12 +47,21 @@ module.exports = yeoman.generators.Base.extend({
             this.destinationPath('.gitignore')
         );
 
-        if (this.useJSCS===true) {
-	        this.fs.copy(
-	            this.templatePath('jscsrc'),
-	            this.destinationPath('.jscsrc')
-	        );
-    	}
+        switch(this.jsLinter) {
+        	case 'jscs':
+              	this.fs.copy(
+	            	this.templatePath('jscsrc'),
+	            	this.destinationPath('.jscsrc')
+	        	);
+	        break;
+
+	        case 'jscs':
+              	this.fs.copy(
+	            	this.templatePath('jshintrc'),
+	            	this.destinationPath('.jshintrc')
+	        	);
+	        break;
+        }
 
         this.fs.copyTpl(
             this.templatePath('gulpfile.js'),
@@ -61,7 +70,7 @@ module.exports = yeoman.generators.Base.extend({
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
-                useJSCS: this.useJSCS,
+                jsLinter: this.jsLinter,
                 ftpHost: this.ftpHost,
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
@@ -79,7 +88,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
-                useJSCS: this.useJSCS,
+                jsLinter: this.jsLinter,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useFlexboxgrid: this.useFlexboxgrid,
@@ -98,7 +107,7 @@ module.exports = yeoman.generators.Base.extend({
                 appauthor: this.appauthor,
                 appemail: this.appemail,
                 useBabel: this.useBabel,
-                useJshint: this.useJshint,
+                jsLinter: this.jsLinter,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro
             }
@@ -249,29 +258,22 @@ module.exports = yeoman.generators.Base.extend({
             },
             {
                 type: 'confirm',
-                name: 'useJSCS',
-                message: 'Would you like to use '+chalk.yellow('JSCS')
+                name: 'useJSLint',
+                message: 'Would you like to use a '+chalk.yellow('JS Linter')
             },
             {
                 type: 'list',
-                name: 'cssPrepro',
-                message: 'Choose a '+chalk.yellow('JSCS styleguide'),
+                name: 'jsLinter',
+                message: 'Choose a '+chalk.yellow('JSLinter'),
                 choices: [{
-                    name: 'Google',
-                    value: 'google'
+                    name: 'JSCS',
+                    value: 'jscs'
                 }, {
-                    name: 'Airbnb',
-                    value: 'airbnb'
+                    name: 'JSHint',
+                    value: 'jshint'
                 }],
                 when: function (answers) {
-                    return answers.useJSCS;
-                },
-                validate: function(value) {
-                    if (value!=='') {
-                        return true;
-                    } else {
-                        return chalk.red('You must select one JSCS styleguide!');
-                    }
+                    return answers.useJSLint;
                 }
             },
             {
@@ -372,7 +374,7 @@ module.exports = yeoman.generators.Base.extend({
         this.templateLang = answers.templateLang;
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
-        this.useJSCS = answers.useJSCS;
+        this.jsLinter = answers.jsLinter;
         this.setupFTP = answers.setupFTP;
         this.ftpHost = answers.ftpHost;
         this.ftpUser = answers.ftpUser;

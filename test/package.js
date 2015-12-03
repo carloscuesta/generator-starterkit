@@ -14,7 +14,7 @@ describe('starterkit:package.json', function() {
             })
             .withPrompts({
                 useBabel: true,
-                useJSCS: true
+                jsLinter: 'jscs'
             })
             .on('end', done);
     });
