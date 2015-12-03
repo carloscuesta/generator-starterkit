@@ -70,6 +70,7 @@ module.exports = yeoman.generators.Base.extend({
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
+                useJSLint: this.useJSLint,
                 jsLinter: this.jsLinter,
                 ftpHost: this.ftpHost,
                 ftpUser: this.ftpUser,
@@ -375,6 +376,7 @@ module.exports = yeoman.generators.Base.extend({
         this.cssPrepro = answers.cssPrepro;
         this.useBabel = answers.useBabel;
         this.jsLinter = answers.jsLinter;
+        this.useJSLint = answers.useJSLint;
         this.setupFTP = answers.setupFTP;
         this.ftpHost = answers.ftpHost;
         this.ftpUser = answers.ftpUser;

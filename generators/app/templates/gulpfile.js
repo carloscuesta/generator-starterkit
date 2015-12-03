@@ -178,18 +178,21 @@ gulp.task('scripts', function() {
             message: 'your js files has been minified and concatenated.'
         }));
 });
-<% if (jsLinter == 'jscs') {%>
+<% if (useJSLint == true) { %>
 /* Lint, lint the JavaScript files */
 
-gulp.task('lint', function() {
+gulp.task('lint', function() {<% if (jsLinter == 'jshint') { %>
 	return gulp.src(routes.scripts.js)
 		.pipe(jshint({
 			lookup: true,
 			linter: 'jshint',
 		}))
-		.pipe(jshint.reporter('default'));
+		.pipe(jshint.reporter('default')); <% } if (jsLinter == 'jscs') { %>
+	return gulp.src(routes.scripts.js)
+		.pipe(jscs())
+		.pipe(jscs.reporter());<% } %>
 });
-<% } else {}%>
+<% } %>
 /* Image compressing task */
 
 gulp.task('images', function() {
@@ -304,7 +307,7 @@ gulp.task('critical', function () {
         }));
 });
 
-gulp.task('dev', ['templates', 'styles', 'scripts',<% if (jsLinter=='jscs'){ %>'lint',<%}%>'images', 'serve']);
+gulp.task('dev', ['templates', 'styles', 'scripts', <% if (jsLinter=='jscs'){ %>'lint',<%}%> 'images', 'serve']);
 
 gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 

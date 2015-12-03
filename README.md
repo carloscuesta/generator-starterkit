@@ -20,11 +20,11 @@
     - [**Jade**](http://jade-lang.com): Templating engine.
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - JavaScript
+	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
+	- [**Npm**](https://www.npmjs.com): Package manager used to install dependencies and everything you need.
 	- Linters
 		- [**JSCS**](http://jscs.info): Code style linter for programmatically enforcing your style guide. 
 		- [**JSHint**](http://jshint.com): A Static Code Analysis Tool for JavaScript. 
-	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
-	- [**Npm**](https://www.npmjs.com): Package manager used to install dependencies and everything you need.
 
 ## Features
 
