@@ -20,7 +20,9 @@
     - [**Jade**](http://jade-lang.com): Templating engine.
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - JavaScript
-	- [**JSCS**](http://jscs.info): Code style linter for programmatically enforcing your style guide. 
+	- Linters
+		- [**JSCS**](http://jscs.info): Code style linter for programmatically enforcing your style guide. 
+		- [**JSHint**](http://jshint.com): A Static Code Analysis Tool for JavaScript. 
 	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
 	- [**Npm**](https://www.npmjs.com): Package manager used to install dependencies and everything you need.
 
@@ -29,7 +31,7 @@
 - ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
 - ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
-- ```lint```: Lint your JavaScript files using [JSCS](http://jshint.com/about).
+- ```lint```: Lint your JavaScript files.
 - ```images```: Images optimization.
 - ```deploy```: Deploying your project into a ftp server.
 - ```beautify```: Beautify preproduction files.
