@@ -10,7 +10,7 @@
 - [**Less**](http://lesscss.org)<% } else {%>
 - [**Sass**](http://sass-lang.com) <% } %> <% if (useBabel == true) { %>
 - [**Babel**](https://babeljs.io)<% } if (jsLinter == 'jscs') {%>
-- [**JSCS**](http://jscs.info) <% } else {%>
+- [**JSCS**](http://jscs.info) <% } if (jsLinter == 'jshint') {%>
 - [**JSHint**](http://jshint.com) <% } %>
 
 ## Install and Use

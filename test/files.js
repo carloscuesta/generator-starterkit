@@ -24,4 +24,44 @@ describe('starterkit:files', function() {
             '.gitignore'
         ]);
     });
+
+    describe('when using jscs', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        jsLinter: 'jscs'
+        	    })
+        	    .on('end', done);
+    	});
+
+    	it('creates config files', function() {
+        	assert.file([
+            	'.jscsrc'
+        	]);
+    	});
+    });
+
+    describe('when using jshint', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        jsLinter: 'jshint'
+        	    })
+        	    .on('end', done);
+    	});
+
+    	it('creates config files', function() {
+        	assert.file([
+            	'.jshintrc'
+        	]);
+    	});
+    });
 });

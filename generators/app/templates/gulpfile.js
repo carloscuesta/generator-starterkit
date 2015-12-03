@@ -3,7 +3,7 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
     jade = require('gulp-jade'),<% } else { %>
     minifyHTML = require('gulp-minify-html'), <% } if (jsLinter == 'jscs') {%>
-    jscs = require('gulp-jscs'),<% } else {%>
+    jscs = require('gulp-jscs'),<% } if (jsLinter == 'jshint') {%>
     jshint = require('gulp-jshint'),<% } %>
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create(),

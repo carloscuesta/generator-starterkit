@@ -55,7 +55,7 @@ module.exports = yeoman.generators.Base.extend({
 	        	);
 	        break;
 
-	        case 'jscs':
+	        case 'jshint':
               	this.fs.copy(
 	            	this.templatePath('jshintrc'),
 	            	this.destinationPath('.jshintrc')
