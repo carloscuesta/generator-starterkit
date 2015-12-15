@@ -388,7 +388,7 @@ module.exports = yeoman.Base.extend({
     },
 
     constructor: function() {
-        Base.apply(this, arguments);
+        yeoman.Base.apply(this, arguments);
 
         this.option('skip-welcome-message', {
             desc: 'Skips the welcome message',
