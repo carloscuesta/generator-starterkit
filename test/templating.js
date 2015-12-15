@@ -1,8 +1,8 @@
 'use strict';
 
 var path = require('path'),
-    assert = require('yeoman-generator').assert,
-    helpers = require('yeoman-generator').test;
+    assert = require('yeoman-assert'),
+    helpers = require('yeoman-test');
 
 describe('starterkit:templating', function() {
 

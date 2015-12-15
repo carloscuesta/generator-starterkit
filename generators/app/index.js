@@ -1,6 +1,6 @@
 'use strict';
 
-var yeoman = require('yeoman-generator'),
+var yeoman = require('yeoman-generators'),
     chalk = require('chalk'),
     yosay = require('yosay'),
     mkdirp = require('mkdirp');
