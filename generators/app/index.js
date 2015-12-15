@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator'),
     yosay = require('yosay'),
     mkdirp = require('mkdirp');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
     _projectStructure: function() {
         var destRoot = this.destinationRoot(),
@@ -388,7 +388,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     constructor: function() {
-        yeoman.Base.apply(this, arguments);
+        Base.apply(this, arguments);
 
         this.option('skip-welcome-message', {
             desc: 'Skips the welcome message',
