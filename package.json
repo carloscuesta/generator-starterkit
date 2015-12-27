@@ -37,7 +37,15 @@
     "chalk": "^1.1.1",
     "mkdirp": "^0.5.1",
     "yeoman-assert": "^2.1.1",
+<<<<<<< Updated upstream
     "yeoman-generator": "^0.22.1",
+=======
+<<<<<<< HEAD
+    "yeoman-generator": "^0.22.2",
+=======
+    "yeoman-generator": "^0.22.1",
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     "yeoman-test": "^1.0.0",
     "yosay": "^1.1.0"
   },
