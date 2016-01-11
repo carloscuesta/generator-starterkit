@@ -57,7 +57,7 @@ describe('starterkit:styles', function() {
     	it('should contain necessary dependencies', function() {
     	    [
     	        'gulp-less',
-    	        'gulp-minify-css'
+    	        'gulp-cssnano'
     	    ].forEach(function(dependency) {
     	        assert.fileContent('package.json', dependency);
     	    });

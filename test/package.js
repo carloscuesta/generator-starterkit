@@ -32,7 +32,7 @@ describe('starterkit:package.json', function() {
             'gulp-plumber',
             'gulp-rename',
             'gulp-uglify',
-            'gulp-minify-css',
+            'gulp-cssnano',
             'gulp-uncss',
             'vinyl-ftp',
             'gulp-sourcemaps',

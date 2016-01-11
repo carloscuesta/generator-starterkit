@@ -59,7 +59,7 @@ describe('starterkit:gulp', function() {
             'vinyl-ftp',
             'gulp-beautify',
             'gulp-uncss',
-            'gulp-minify-css',
+            'gulp-cssnano',
             'gulp-beautify',
             'gulp-sourcemaps',
             'critical'

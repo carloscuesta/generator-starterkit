@@ -11,7 +11,7 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     notify = require('gulp-notify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
-    minifyCss = require('gulp-minify-css'),
+    minifyCss = require('gulp-cssnano'),
     uncss = require('gulp-uncss'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
