@@ -53,7 +53,7 @@ describe('starterkit:templating', function() {
     	});
 
     	it('should contain necessary dependencies', function() {
-    	    ['gulp-minify-html'].forEach(function(dependency) {
+    	    ['gulp-htmlmin'].forEach(function(dependency) {
     	        assert.fileContent('package.json', dependency);
     	    });
     	});

@@ -130,7 +130,7 @@ describe('starterkit:gulp', function() {
     	it('should contain additional packages', function() {
     	    [
     	        'gulp-less',
-    	        'gulp-minify-html',
+    	        'gulp-htmlmin',
     	        'gulp-jshint'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);

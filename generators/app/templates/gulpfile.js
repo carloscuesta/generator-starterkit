@@ -2,7 +2,7 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     less = require('gulp-less'),<% } else { %>
     sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
     jade = require('gulp-jade'),<% } else { %>
-    minifyHTML = require('gulp-minify-html'), <% } if (jsLinter == 'jscs') {%>
+    minifyHTML = require('gulp-htmlmin'), <% } if (jsLinter == 'jscs') {%>
     jscs = require('gulp-jscs'),<% } if (jsLinter == 'jshint') {%>
     jshint = require('gulp-jshint'),<% } %>
     concat = require('gulp-concat'),
@@ -96,12 +96,7 @@ gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
             message: 'Jade task completed.'
         }));<% } else {%>
     return gulp.src(routes.templates.html)
-        .pipe(minifyHTML({
-            empty:true,
-            quotes:true,
-            cdata:true,
-            conditionals:true
-        }))
+        .pipe(minifyHTML({collapseWhitespace: true}))
         .pipe(browserSync.stream())
         .pipe(gulp.dest(routes.files.html))
         .pipe(notify({
