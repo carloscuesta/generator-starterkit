@@ -28,7 +28,7 @@
     "gulp-babel": "^6.1.1", <% } %>
     "gulp-beautify": "^2.0.0",
     "gulp-concat": "^2.6.0",
-    "gulp-cssimport": "^2.1.2",
+    "gulp-cssimport": "^3.0.1",
     "gulp-imagemin": "^2.4.0",<% if (templateLang == 'jade') { %>
     "gulp-jade": "^1.1.0",<% } else { %>
     "gulp-htmlmin": "1.3.0", <% } %>

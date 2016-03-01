@@ -1,25 +1,84 @@
-.wrap.container-fluid
-    .starterkit-section
-        h3 Hello!
-        p You now have:
+main
+  section.getting-started
+    .wrap
+      blockquote
+        h2
+          b Hey! I've created a project for you. This is what you've got
+      br
+      h2.section-title Technologies
+      ul
+		li
+			span.tech Gulp.js <% if (useBabel == true) { %>
+		li
+			span.tech Babel <% } %> <% if (jsLinter == 'jscs') { %>
+		li
+			span.tech JSCS <% } if (jsLinter == 'jshint') {%>
+		li
+			span.tech JSHint <% } if (cssPrepro == 'less') { %>
+		li
+			span.tech Less <% } else { %>
+		li
+			span.tech Sass <% } %> <% if (templateLang == 'jade') 	{ %>
+		li
+			span.tech Jade <% } else { %>
+		li
+			span.tech HTML <% } %> <% if (useFlexboxgrid) { %>
+		li
+			span.tech Flexboxgrid <% } %> <% if (useBootstrap) { %>
+		li
+			span.tech Bootstrap <% } %>
+      h3.section-title Happy Coding!
+  section.getting-started
+    .wrap
+      h2.section-title Getting Started
+      p
+        | The
+        b starterkit
+        |  allows you to create and build awesome sites without worrying about anything else. To get started, just run the default gulp task.
+      .code-block-small
+        code
+          | $
+          span.gulp-default gulp
+      p
+        b
+          | Don't forget to
+          a(href='github generator-starterkit carloscuesta') star the generator-starterkit
+          |  project on GitHub!
+  section.gulp-workflow
+    .wrap
+      h2.section-title Exploring Starterkit Features
+      p
+        | Starterkit comes with a lot of tasks that can be runned with:
+        .code-block-small
+          code
+            | $ gulp
+            span.highlight-code taskname
+      p
+        | Let's take a look at them. There are
+        b 4 main tasks
+        |  that groups a bunch of other subtasks. You can run directly a group of tasks using the main one, or just a specific one by their name.
         ul
-            li Gulp.js <% if (useBabel == true) { %>
-            li Babel <% } %> <% if (cssPrepro == 'less') { %>
-            li Less <% } else { %>
-            li Sass <% } %> <% if (templateLang == 'jade') { %>
-            li Jade <% } else { %>
-            li HTML <% } %> <% if (useFlexboxgrid) { %>
-            li Flexboxgrid <% } %> <% if (useBootstrap) { %>
-            li Bootstrap <% } %>
-        span Enjoy Coding!
-
-    .starterkit-section
-        h3 About
-        p
-            |The <b>generator-starterkit</b> allows you to create and build awesome sites without worrying about anything else.
-            |<b>The only thing you should worry about is your code</b>. Just run <code>gulp</code> and you're ready to go!.
-            |For more information about <code>gulp tasks</code> and the project, go to the <a href="https://github.com/carloscuesta/starterkit#carlos-cuesta-starter-kit">starterkit documentation</a>.
-    .starterkit-section.closing-section
-        h3 Info
-        p
-            |This page was generated with ♥ by <%= appname %> using <a href="http://github.com/carloscuesta/generator-starterkit">generator-starterkit</a>.
+          li
+            span.gulp-task gulp
+            |  : Default dev task, watch and serves your code, compiling on change and injecting them into the browser.
+          li
+            span.gulp-task build
+            |  : Compiles styles and templates, transpiles scripts, optimizes images and beautifies prepro files.
+          li
+            span.gulp-task optimize
+            |  : Clean unused CSS, extract critical path, compress images.
+          li
+            span.gulp-task deploy
+            |  : Upload your /dist folder into your server.
+      p
+        | To see with more detail the subtasks runned, please take a look at the
+        a(href='https://github.com/carloscuesta/starterkit/#tasks', target='_blank') starterkit documentation on GitHub
+        | .
+      a.btn.btn-background.btn-download(href='https://github.com/carloscuesta/starterkit/#tasks', target='_blank') Documentation
+footer
+  h2
+    | Made with
+    svg.icon.icon-heart
+      use(xlink:href='#icon-heart')
+    |  by
+    a(href='https://github.com/carloscuesta/generator-starterkit', target='_blank') generator-starterkit

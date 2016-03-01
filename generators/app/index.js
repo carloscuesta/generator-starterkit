@@ -30,11 +30,16 @@ module.exports = yeoman.Base.extend({
     _projectFiles: function() {
         var projectInfo = {
             appname: this.appname,
-            appversion: this.appversion,
             appdescription: this.appdescription,
             applicense: this.applicense,
             appauthor: this.appauthor,
-            appemail: this.appemail
+            appemail: this.appemail,
+            useBabel: this.useBabel,
+            jsLinter: this.jsLinter,
+            templateLang: this.templateLang,
+            cssPrepro: this.cssPrepro,
+            useFlexboxgrid: this.useFlexboxgrid,
+            useBootstrap: this.useBootstrap
         };
 
         this.fs.copy(
@@ -144,18 +149,7 @@ module.exports = yeoman.Base.extend({
                 this.fs.copyTpl(
                     this.templatePath('templating/jade/_includes/_*.jade'),
                     this.destinationPath('src/templates/_includes/'),
-                    {
-                        appname: this.appname,
-                        appdescription: this.appdescription,
-                        applicense: this.applicense,
-                        appauthor: this.appauthor,
-                        appemail: this.appemail,
-                        useBabel: this.useBabel,
-                        templateLang: this.templateLang,
-                        cssPrepro: this.cssPrepro,
-                        useFlexboxgrid: this.useFlexboxgrid,
-                        useBootstrap: this.useBootstrap
-                    }
+                    projectInfo
                 );
             break;
 
@@ -163,18 +157,7 @@ module.exports = yeoman.Base.extend({
                 this.fs.copyTpl(
                     this.templatePath('templating/html/*.html'),
                     this.destinationPath('src/templates/'),
-                    {
-                        appname: this.appname,
-                        appdescription: this.appdescription,
-                        applicense: this.applicense,
-                        appauthor: this.appauthor,
-                        appemail: this.appemail,
-                        useBabel: this.useBabel,
-                        templateLang: this.templateLang,
-                        cssPrepro: this.cssPrepro,
-                        useFlexboxgrid: this.useFlexboxgrid,
-                        useBootstrap: this.useBootstrap
-                    }
+                    projectInfo
                 );
             break;
         }
