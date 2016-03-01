@@ -2,6 +2,9 @@
 @import '../../node_modules/flexboxgrid/css/flexboxgrid.min.css';<% } if (useBootstrap) { %>
 @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';<% } %>
 
+@import (once) "_includes/_vars.less";
+@import '../../node_modules/flexboxgrid/css/flexboxgrid.min.css';
+
 html {
 	font-family:'Open Sans', Helvetica;
 	font-size:18px;
@@ -183,13 +186,16 @@ li {
 	font-weight:300;
 	margin-top:1.25em;
 }
-@media {
-	(max-width {
-		&:@max-width) {
-			header h1{font-size:2.55em;
-		}
-		&:843px) {
-			.btn-download{margin-bottom:1.5em;
-		}
-	}
+
+@media(max-width: @max-width) {
+    header h1 {
+        font-size:2.55em;
+    }
 }
+
+@media(max-width: 843px) {
+    .btn-download {
+        margin-bottom:1.5em;
+    }
+}
+
