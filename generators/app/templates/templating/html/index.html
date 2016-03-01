@@ -5,52 +5,80 @@
     <title><%= appauthor %> | <%= appname %></title>
     <meta charset="utf-8">
     <meta name="author" content="<%= appauthor %>">
-    <meta name="description" content="Carlos Cuesta web starter kit">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <base href="./assets/">
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/flexboxgrid/6.2.0/flexboxgrid.min.css" type="text/css">
+    <meta name="description" content="<%= appdescription %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="starterkit">
-    <header class="row hero center-xs middle-xs">
-        <div class="col-xs-12">
-            <div class="row center-xs">
-                <h1 class="title-hero"><%= appauthor %><span class="subtitle"><br><%= appname %></span></h1></div>
-            <div class="row center-xs">
-                <p class="text-hero"><%= appdescription %></p>
-            </div>
-        </div>
+<body>
+    <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <symbol id="icon-heart" viewBox="0 0 768 1024">
+                <title>heart</title>
+                <path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path>
+            </symbol>
+        </defs>
+    </svg>
+    <header>
+        <h1><%= appname %></h1>
+        <h2><%= appdescription %></h2>
+        <div class="buttons"> <a class="btn" href="https://github.com/carloscuesta/generator-starterkit/" target="_blank">GitHub</a> <a class="btn" href="https://github.com/carloscuesta/starterkit/archive/master.zip" target="_blank">Download</svg></a> <a class="btn" href="https://github.com/carloscuesta/generator-starterkit" target="_blank">Star</use></svg></a> </div>
     </header>
-    <div class="wrap container-fluid">
-        <div class="starterkit-section">
-            <h3>Hello!</h3>
-            <p>Now you have:</p>
-            <ul>
-                <li>Gulp.js</li><% if (useBabel == true) { %>
-                <li>Babel</li><% } %> <% if (cssPrepro == 'less') { %>
-                <li>Less</li> <% } else { %>
-                <li>Sass</li> <% } %> <% if (templateLang == 'jade') { %>
-                <li>Jade</li> <% } else { %>
-                <li>HTML</li> <% } %> <% if (useFlexboxgrid) { %>
-                <li>Flexboxgrid</li> <% } %> <% if (useBootstrap) { %>
-                <li>Bootstrap</li> <% } %>
-            </ul>
-        <span>Enjoy Coding!</span>
-        </div>
-        <div class="starterkit-section">
-            <h3>About</h3>
-            <p>
-                The <b>generator-starterkit</b> allows you to create and build awesome sites without worrying about anything else.
-                <b>The only thing you should worry about is your code</b>. Just run <code>gulp</code> and you're ready to go!. For more information about <code>gulp tasks</code> and the project, go to the <a href="https://github.com/carloscuesta/starterkit#carlos-cuesta-starter-kit">starterkit documentation</a>.</p>
-        </div>
-        <div class="starterkit-section closing-section">
-            <h3>Info</h3>
-            <p>This page was generated with ♥ by <%= appname %> using <a href="http://github.com/carloscuesta/generator-starterkit">generator-starterkit</a>.
-        </div>
-    </div>
+    <main>
+        <section class="getting-started">
+            <div class="wrap">
+                <blockquote>
+                    <h2><b>Hey! I've created a project for you. This is what you've got</b></h2>
+                </blockquote>
+                <br>
+                <h2 class="section-title">Technologies</h2>
+                <ul>
+                    <li><span class="tech">Gulp.js</span></li><% if (useBabel == true) { %>
+                    <li><span class="tech">Babel</span></li> <% } %> <% if (jsLinter == 'jscs') { %>
+                    <li><span class="tech">JSCS</span></li> <% } if (jsLinter == 'jshint') {%>
+                    <li><span class="tech">JSHint</span></li> <% } if (cssPrepro == 'less') { %>
+                    <li><span class="tech">Less</span></li> <% } else { %>
+                    <li><span class="tech">Sass</span></li> <% } %> <% if (templateLang == 'jade') { %>
+                    <li><span class="tech">Jade</span></li> <% } else { %>
+                    <li><span class="tech">HTML</span></li> <% } %> <% if (useFlexboxgrid) { %>
+                    <li><span class="tech">Flexboxgrid</span></li> <% } %> <% if (useBootstrap) { %>
+                    <li><span class="tech">Bootstrap</span></li> <% } %>
+                </ul>
+                <h3 class="section-title">Happy Coding!</h3>
+            </div>
+        </section>
+        <section class="getting-started">
+            <div class="wrap">
+                <h2 class="section-title">Getting Started</h2>
+                <p>The <b>starterkit</b> allows you to create and build awesome sites without worrying about anything else. To get started, just run the default gulp task.
+                </p>
+                <div class="code-block-small"><code>$ <span class="gulp-default">gulp</span></code></div>
+                <p><b>Don't forget to <a href="#">star the generator-starterkit</a> project on GitHub!</b></p>
+            </div>
+        </section>
+        <section class="gulp-workflow">
+            <div class="wrap">
+                <h2 class="section-title">Exploring Starterkit Tasks</h2>
+                <p>Starterkit comes with a lot of tasks that can be runned with:
+                    <div class="code-block-small"><code>$ gulp <span class="highlight-code">taskname</span></code></div>
+                </p>
+                <p>Let's take a look at them. There are <b>4 main tasks</b> that groups a bunch of other subtasks. You can run directly a group of tasks using the main one, or just a specific one by their name.
+                    <ul>
+                        <li><span class="gulp-task">gulp</span> : Default dev task, watch and serves your code, compiling on change and injecting them into the browser.</li>
+                        <li><span class="gulp-task">build</span> : Compiles styles and templates, transpiles scripts, optimizes images and beautifies prepro files.</li>
+                        <li><span class="gulp-task">optimize</span> : Clean unused CSS, extract critical path, compress images.</li>
+                        <li><span class="gulp-task">deploy</span> : Upload your /dist folder into your server.</li>
+                    </ul>
+                </p>
+                <p>To see with more detail the subtasks runned, please take a look at the <a href="https://github.com/carloscuesta/starterkit/#tasks" target="_blank">starterkit documentation on GitHub</a>.</p>
+                <a href="https://github.com/carloscuesta/starterkit/archive/master.zip" class="btn btn-background btn-download" target="_blank">Documentation</a>
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h2>Made with <svg class="icon icon-heart"><use xlink:href="#icon-heart"></use></svg> by <a href="https://github.com/carloscuesta/generator-starterkit" target="_blank">generator-starterkit</a></h2> </footer>
 </body>
-<script src="js/script.js"></script>
 
 </html>
