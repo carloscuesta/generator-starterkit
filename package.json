@@ -1,6 +1,6 @@
 {
   "name": "generator-starterkit",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Yeoman generator that scaffolds out a front end development starterkit.",
   "license": "MIT",
   "main": "app/index.js",
