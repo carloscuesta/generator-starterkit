@@ -8,15 +8,25 @@ main
       h2.section-title Technologies
       ul
         li
-            span.tech Gulp.js
+            span.tech Gulp.js <% if (useBabel == true) { %>
         li
-            span.tech Babel
+            span.tech Babel <% } %> <% if (jsLinter == 'jscs') { %>
         li
-            span.tech Less
+            span.tech JSCS <% } if (jsLinter == 'jshint') {%>
         li
-            span.tech Jade
+            span.tech JSHint <% } if (cssPrepro == 'less') { %>
         li
-            span.tech Flexboxgrid
+            span.tech Less <% } else { %>
+        li
+        	span.tech Sass <% } %> <% if (templateLang == 'jade') 	{ %>
+        li
+        	span.tech Jade <% } else { %>
+        li
+        	span.tech HTML <% } %> <% if (useFlexboxgrid) { %>
+        li
+        	span.tech Flexboxgrid <% } %> <% if (useBootstrap) { %>
+        li
+        	span.tech Bootstrap <% } %>
       h3.section-title Happy Coding!
   section.getting-started
     .wrap
