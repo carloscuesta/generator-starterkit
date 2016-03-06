@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>generator-starterkit | Scaffold a Front End development starterkit</title>
+        <meta charset="utf-8">
+        <meta name="google-site-verification" content="" />
+        <link rel="canonical" href="">
+        <meta name="author" content="Carlos Cuesta">
+        <meta name="description" content="Yeoman generator that scaffolds out a Front End development starterkit.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="yeoman, generator, generator-starterkit, carlos cuesta, front end">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:description" content="Yeoman generator that scaffolds out a Front End development starterkit.">
+        <meta name="twitter:creator" content="@crloscuesta">
+        <meta name="twitter:url" content="">
+        <meta name="twitter:title" content="generator-starterkit">
+        <meta property="og:title" content="generator-starterkit">
+        <meta property="og:description" content="Yeoman generator that scaffolds out a Front End development starterkit.">
+        <meta property="og:image" content="">
+        <meta property="og:url" content="">
+        <script type="text/javascript">!function(){"use strict";function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))c(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(c(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var a=document.createElement("link");a.href=o,a.rel="stylesheet",a.type="text/css",document.getElementsByTagName("head")[0].appendChild(a),document.cookie="font_css_cache"}}function c(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="/font.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();</script><noscript><link rel="stylesheet" href="assets/font.css"></noscript>
+        <style>*{box-sizing:border-box;}html,body{width:100%;height:100%;font-family:'Montserrat', Helvetica; font-weight:200;font-style: light;font-size:16px;margin:0;padding:0;}header{background-color:#F44336;padding: 4em;}a{text-decoration:none;color:#EF5350;}p a:hover{text-decoration:underline;}.title{margin-bottom:.15em;color:#fff;}.subtitle{font-weight:100;margin-bottom:.85em;color:#fff;}.btn{font-weight:100;letter-spacing:.5px;border-radius:.25em;border-style:solid;border-width:1px;color:#fff;border-color:#fff;display: inline-block;margin-bottom: .5em;padding: .55em .95em;text-decoration: none;text-transform: uppercase;-webkit-transition: color .3s, background-color .3s, border .3s;transition: color .3s, background-color .3s, border .3s;font-size: .85em;margin: .25em;}.btn-large{color:#fff;border-color:#F44336;background-color:#F44336;padding: .75em 1.15em;margin:.25em 0 1.75em 0;}.btn:hover{background-color: #263238;border-color:#263238;}.btn:active{background-color:#37474F;border-color:#37474F;}.wrap{max-width: 990px;margin-right: auto;margin-left: auto;}section{padding:3.5em 2em;}section:not(:last-child){border-bottom: 1px solid #e4e6ea;}.logo{width:6em;margin:0;padding:0;}h1{font-size:3.5em;}.yeoman-init{width:40%;}header,footer,.status{text-align:center;}p{line-height: 1.5em;}.badge{width:115px;}.badge.version{width:105px;}.badge.downloads{width:120px;}.code{width:60%;padding: 1.5em;background-color:#263238;color:#fff;border-radius:.15em;margin-top:1.5em;}code{font-family:'Source Code Pro', monospace;}.prompt{color:#F44336;}h1,h2{margin:0;}strong{font-weight:400;}h1,h2,h3{color:#37474F;}p, li{color:#37474F;}code i {color:#78909C;}footer{background-color:#263238;padding:2em;}footer h2{font-weight:200;color:#78909C;}.icon{width:.85em;height:.85em;display:inline-block;}.icon-heart{fill:#EF5350;}.container{display: -ms-flex;display: -webkit-flex;display: flex;flex-wrap: wrap;align-items:flex-start;}.features .container{align-items:stretch;}li{margin: .65em 0;line-height: 1.35em;padding-right:1em;}ul{margin-top:1.5em;list-style:none;padding:0;width:60%;}.features .code{width:40%;}@media(max-width:768px){.yeoman-init{display:none;} .code, .features .code, .features ul{width:100%;}}</style>
+    </head>
+
+    <body>
+        <header class="header">
+            <h1 class="title">generator starterkit</h1>
+            <h2 class="subtitle">Scaffold a Front End development starterkit.</h2>
+            <div class="buttons">
+                <a href="https://github.com/carloscuesta/generator-starterkit" onmousedown="ga('send', 'event', 'Button', 'View on GitHub');" target="_blank" class="btn">GitHub</a>
+                <a href="" onmousedown="ga('send', 'event', 'Button', 'View Docs');" target="_blank" class="btn">Docs</a>
+                <a href="https://npmjs.com/package/generator-starterkit" onmousedown="ga('send', 'event', 'Button', 'View on NPM');" target="_blank" class="btn">Npm</a>
+            </div>
+        </header>
+
+        <main class="main">
+                <section class="install">
+                    <div class="wrap">
+                        <h2>Install</h2>
+                        <p><strong>Generator-starterkit</strong> is built for fast website creating, without the hassle of setting up your project from scratch. With the powerful build system included you can <strong>focus on the important things</strong>, your code. Generator-starterkit uses the power of <strong>Gulp</strong> which provides you a lot of enhancements to your development workflow.</p>
+                        <div><a href="https://npmjs.com/package/generator-starterkit" class="btn btn-large">Install generator-starterkit</a></div>
+                        <h2>Getting Started</h2>
+                        <div class="container">
+                            <div class="code">
+                                <code>
+                                <i># Install</i><br>
+                                <span class="prompt">$</span> npm i -g generator-starterkit<br><br>
+                                <i># Using the generator</i><br>
+                                <span class="prompt">$</span> mkdir site<br>
+                                <span class="prompt">$</span> cd site<br>
+                                <span class="prompt">$</span> yo starterkit<br>
+                                </code>
+                            </div>
+                            <div class="yeoman-init"><img style="height:250px" src="assets/yeomaninit.svg"></div>
+                        </div>
+                    </div>
+                </section>
+                <section class="features">
+                    <div class="wrap">
+                        <h2>Features</h2>
+                        <div class="container">
+
+                            <ul>
+                                <li><strong>Styles</strong>: Sass or Less auto compiling, prefixing, minifiying and sourcemapping.</li>
+                                <li><strong>Templates</strong>: Jade or Html auto compiling and minifiying.</li>
+                                <li><strong>Scripts</strong>: Scripts concatenation, transpiling with Babel, minifiying and sourcemapping.</li>
+                                <li><strong>Lint</strong>: Linting with JSCS or Babel.</li>
+                                <li><strong>Images</strong>: Images optimization.</li>
+                                <li><strong>Deploy</strong>: Deploy into a ftp server.</li>
+                                <li><strong>Beautify</strong>: Beautify pre production files.</li>
+                                <li><strong>BrowserSync</strong>: Automatically injects all your changes in your files into the browser on save.</li>
+                                <li><strong>Optimize</strong>: Autoptimize your project using uncss, and critical.</li>
+                            </ul>
+
+                            <div class="code">
+                                <code>
+                                <i># Main tasks</i><br>
+                                <span class="prompt">$</span> npm run dev<br>
+                                <span class="prompt">$</span> npm run build<br>
+                                <span class="prompt">$</span> npm run optimize<br>
+                                <span class="prompt">$</span> npm run deploy<br><br>
+                                <i># Specific tasks</i><br>
+                                <span class="prompt">$</span> gulp styles<br>
+                                <span class="prompt">$</span> gulp templates<br>
+                                <span class="prompt">$</span> gulp scripts<br>
+                                <span class="prompt">$</span> gulp images<br>
+                                <span class="prompt">$</span> gulp serve<br>
+                                </code>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+                <section class="technologies">
+                    <div class="wrap">
+                        <h2>Technologies</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </section>
+                <section class="status">
+                    <div class="wrap">
+                        <h2>Status</h2>
+                        <a href="https://travis-ci.org/carloscuesta/generator-starterkit" onmousedown="ga('send', 'event', 'Badge', 'Build');" target="_blank">
+                            <img class="badge" src="https://img.shields.io/travis/carloscuesta/generator-starterkit.svg?style=flat-square">
+                        </a>
+                        <a href="http://npmjs.com/package/generator-starterkit" onmousedown="ga('send', 'event', 'Badge', 'Downloads');" target="_blank">
+                            <img class="badge downloads" src="https://img.shields.io/npm/dt/generator-starterkit.svg?style=flat-square">
+                        </a>
+                        <a href="http://npmjs.com/package/generator-starterkit" onmousedown="ga('send', 'event', 'Badge', 'Version');" target="_blank">
+                            <img class="badge version" src="https://img.shields.io/npm/v/generator-starterkit.svg?style=flat-square">
+                        </a>
+                    </div>
+                </section>
+        </main>
+
+        <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="icon-heart" viewBox="0 0 768 1024"><title>heart</title><path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path></symbol></defs></svg>
+
+        <footer>
+            <h2>Made with <svg class="icon icon-heart"><use xlink:href="#icon-heart"></use></svg> by <a href="https://carloscuesta.me">Carlos Cuesta</a></h2>
+        </footer>
+    </body>
+
+</html>
