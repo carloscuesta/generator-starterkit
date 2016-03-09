@@ -10,6 +10,7 @@
     "email": "crloscuesta@gmail.com",
     "url": "https://github.com/carloscuesta"
   },
+  "homepage": "https://generatorstarterkit.carloscuesta.me",
   "scripts": {
     "test": "mocha"
   },
