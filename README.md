@@ -28,7 +28,7 @@
 
 ## Features
 
-- ```styles``` [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
+- ```styles```: [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
 - ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
 - ```lint```: Lint your JavaScript files.
