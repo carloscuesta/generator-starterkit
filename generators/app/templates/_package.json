@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "browser-sync": "^2.11.1",
-    "critical": "^0.7.1",
+    "critical": "^0.7.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",<% if (useBabel == true) { %>
     "gulp-babel": "^6.1.1", <% } %>
@@ -42,7 +42,7 @@
     "gulp-sass":"^2.1.1",<% } %>
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
-    "gulp-uncss": "^1.0.4",<% if (useFlexboxgrid) { %>
+    "gulp-uncss": "^1.0.5",<% if (useFlexboxgrid) { %>
     "flexboxgrid": "^6.3.0",<% } %> <% if (useBootstrap) { %>
     "bootstrap": "^3.3.6",<% } %>
     "vinyl-ftp": "^0.4.5"
