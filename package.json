@@ -12,7 +12,8 @@
   },
   "homepage": "https://generatorstarterkit.carloscuesta.me",
   "scripts": {
-    "test": "mocha"
+    "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*",
+    "test": "npm run coveralls"
   },
   "files": [
     "generators"
@@ -43,6 +44,8 @@
     "yosay": "^1.1.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "^2.4.5",
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3"
   }
 }
