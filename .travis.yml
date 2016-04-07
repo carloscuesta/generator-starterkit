@@ -1,13 +1,13 @@
 sudo: false
 language: node_js
 node_js:
-  - '5'
-  - '4'
-  - 'iojs'
-  - '0.12'
-  - '0.11'
-  - '0.10'
+- '5'
+- '4'
+- iojs
+- '0.12'
+- '0.11'
+- '0.10'
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 notifications:
   slack:
-    secure: UNWilS66pVbi5wOmiUypOyS6RNs/KdQ+jj0jpDtA3BdVHP8pkSzdvJA7WE3Azvd5VxSeWRJRVT9VK8gFhfek9+u/uPFZp/B4XF00ELLspvS/yZu4L/T+9XDgsenN01iRVmC8cfxX90LEzCohDJF2tX0CQuk6eDhFsby8CiNpnFr3MRed31+/xqwvRbI78b1XrKg62ojK4KpzvpqlANnbZEW67MZ6KI/9rm5ZsXrzDyzrfCmYnkq2/XOdVgMTFVteK6wAuAizVVwh2azh7UrkltgL4SwV/eIuBdheM+TgmSQyWi3ejLzZFPQC1ukS4ghfFdRPIWm3FrXgaOWyCxGHCD9ROBW/17T5Acs3SPnyICmcBAwmnCJqvUU9kFabWakl8g43TNwWx/i0QIKAJJL8f6sCIWhw7vCOpiY4Eau887RU2VDx840iVh1XysWSBVCKG+o5j/f6oBjmjAFwlNYppbcE6oDm506/f0tallEIjpUZQq9LmPDhHcunfq7WaGE7pIb6VV+BCMMxCS6j8YFiQOfCm2CMYiWOwcAGEFwzTKfQ6lDEfHQruPLWJoCQ44s1dT3Q3U3k+1jmGiuWuhyKLDIeWSZGA/cZ6knefL1aFsz5418R9LXGNqgtplbeM9szYulTi5vOVoo8q6okKXC3r7t8dCBq6B8qz9oZVwj21SA=
+    secure: FV0MZe4mrcwMg/mNK5TJfw2V28DXeJytA4mFDVG1XzXOFlDdp2Icb0gki090rKORDam1hqawIBkft/woJgAdHR7NwmK6f46Y2j3lDDYndkmWNq3Hbt1GfGx5XEvV0o1gyW/DX+xQSXdHsPL8LfIfoJRqLAy27lm+BXscTF9GR/u55I/K6PDfBet2RpMPOjr9365sOhG3wcQBoaq7GHpghthn/1VlprJEY1rZUICuTdne8fUkjRln+/WookeVgIluSy3n61iO2GsD3HkYfMjXgdp4BZPfFWTmLVZb7euPPW1smAfwr9q/sueseGfZDnJxODTP2rHZOApFS12C1OG0p+I2dCGisTuqPYdwgDegTVsisFjv5bTaK4OtsCwTwy65RJvuBcgCp1h1XJH+fuTYeZe/HAMfjOKtwIb90L6tEGOs6cn4Sf2TJiShEIcj5sMjnCwegO+bBm2NHTJRAhQ5D7VWJfGkI/gtl/CTvUsFjQvT66oSlEhfg7CIqby579wKqB0uyUghZLHPgp58Fu/MfbrFkbZvla0cJu/pB7cWV/aB5L0LPz+xRe4qYBe/dEabj8SVqre1ekPGwylcz8+YCCREtXBVqUCqpK4iG/dCRlBx8bYtlv9hm5HDo9o1gaYidIJYTgkvNdlVaxuiBt0XFvsLelBT7ErbULhvPN327lU=
