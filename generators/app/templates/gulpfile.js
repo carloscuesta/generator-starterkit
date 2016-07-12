@@ -1,7 +1,7 @@
 var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     less = require('gulp-less'),<% } else { %>
-    sass = require('gulp-sass'),<% } %> <% if (templateLang == 'jade') { %>
-    jade = require('gulp-jade'),<% } else { %>
+    sass = require('gulp-sass'),<% } %> <% if (templateLang == 'pug') { %>
+    pug = require('gulp-pug'),<% } else { %>
     minifyHTML = require('gulp-htmlmin'), <% } if (jsLinter == 'jscs') {%>
     jscs = require('gulp-jscs'),<% } if (jsLinter == 'jshint') {%>
     jshint = require('gulp-jshint'),<% } %>
@@ -41,9 +41,9 @@ var routes = {
         css: baseDirs.assets+'css/'
     },
 
-    templates: {<% if (templateLang == 'jade') { %>
-    	jade: baseDirs.src+'templates/*.jade',
-        _jade: baseDirs.src+'templates/_includes/*.jade',<% } else { %>
+    templates: {<% if (templateLang == 'pug') { %>
+    	pug: baseDirs.src+'templates/*.pug',
+        _pug: baseDirs.src+'templates/_includes/*.pug',<% } else { %>
         html: baseDirs.src+'templates/*.html'<% } %>
     },
 
@@ -80,20 +80,20 @@ var ftpCredentials = {
 
 // Templating
 
-gulp.task('templates', function() {<% if (templateLang == 'jade') { %>
-    return gulp.src([routes.templates.jade, '!' + routes.templates._jade])
+gulp.task('templates', function() {<% if (templateLang == 'pug') { %>
+    return gulp.src([routes.templates.pug, '!' + routes.templates._pug])
         .pipe(plumber({
             errorHandler: notify.onError({
-                title: "Error: Compiling Jade.",
+                title: "Error: Compiling pug.",
                 message:"<%%= error.message %>"
             })
         }))
-        .pipe(jade())
+        .pipe(pug())
         .pipe(gulp.dest(routes.files.html))
         .pipe(browserSync.stream())
         .pipe(notify({
-            title: 'Jade Compiled succesfully!',
-            message: 'Jade task completed.'
+            title: 'pug Compiled succesfully!',
+            message: 'pug task completed.'
         }));<% } else {%>
     return gulp.src(routes.templates.html)
         .pipe(minifyHTML({collapseWhitespace: true}))
@@ -248,8 +248,8 @@ gulp.task('serve', function() {
     });
     <% if (cssPrepro=='less') { %>
     gulp.watch([routes.styles.less, routes.styles._less], ['styles']);<% } else { %>
-    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);<% } %> <% if (templateLang == 'jade') { %>
-    gulp.watch([routes.templates.jade, routes.templates._jade], ['templates']);<% } else { %>
+    gulp.watch([routes.styles.scss, routes.styles._scss], ['styles']);<% } %> <% if (templateLang == 'pug') { %>
+    gulp.watch([routes.templates.pug, routes.templates._pug], ['templates']);<% } else { %>
     gulp.watch(routes.templates.html, ['templates']);<% } %>
     gulp.watch(routes.scripts.js, ['scripts', 'beautify']);
 });
@@ -313,4 +313,3 @@ gulp.task('deploy', ['optimize', 'ftp']);
 gulp.task('default', function() {
     gulp.start('dev');
 });
-

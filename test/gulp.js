@@ -68,7 +68,7 @@ describe('starterkit:gulp', function() {
         });
     });
 
-    describe('when using sass, babel, jade and jscs', function () {
+    describe('when using sass, babel, pug and jscs', function () {
     	before(function(done) {
         	helpers.run(path.join(__dirname, '../generators/app'))
         	    .inDir(path.join(__dirname, './.tmp'))
@@ -78,7 +78,7 @@ describe('starterkit:gulp', function() {
         	    .withPrompts({
         	        cssPrepro: 'sass',
         	        useBabel: true,
-        	        templateLang: 'jade',
+        	        templateLang: 'pug',
         	        jsLinter: 'jscs'
         	    })
         	    .on('end', done);
@@ -88,7 +88,7 @@ describe('starterkit:gulp', function() {
     	    [
     	        'gulp-sass',
     	        'gulp-babel',
-    	        'gulp-jade',
+    	        'gulp-pug',
     	        'gulp-jscs'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);
@@ -105,7 +105,7 @@ describe('starterkit:gulp', function() {
     	    [
     	        '_scss',
     	        'css',
-    	        '_jade'
+    	        '_pug'
     	    ].forEach(function(pkg) {
     	        assert.fileContent('gulpfile.js', pkg);
     	    });

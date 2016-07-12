@@ -22,7 +22,7 @@ module.exports = yeoman.Base.extend({
         mkdirp(srcDir + '/images');
         mkdirp(srcDir + '/scripts');
         mkdirp(srcDir + '/styles/_includes/');
-        if (this.templateLang==='jade') {
+        if (this.templateLang==='pug') {
             mkdirp(srcDir + '/templates/_includes/');
         }
     },
@@ -139,15 +139,15 @@ module.exports = yeoman.Base.extend({
         );
 
         switch(this.templateLang) {
-            case 'jade':
+            case 'pug':
                 this.fs.copyTpl(
-                    this.templatePath('templating/jade/*.jade'),
+                    this.templatePath('templating/pug/*.pug'),
                     this.destinationPath('src/templates/'),
                     projectInfo
                 );
 
                 this.fs.copyTpl(
-                    this.templatePath('templating/jade/_includes/_*.jade'),
+                    this.templatePath('templating/pug/_includes/_*.pug'),
                     this.destinationPath('src/templates/_includes/'),
                     projectInfo
                 );
@@ -215,8 +215,8 @@ module.exports = yeoman.Base.extend({
                 name: 'templateLang',
                 message: 'Choose a '+chalk.green('templating or markup language'),
                 choices: [{
-                    name: 'Jade',
-                    value: 'jade'
+                    name: 'Pug',
+                    value: 'pug'
                 }, {
                     name: 'Html',
                     value: 'html'

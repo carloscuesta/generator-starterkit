@@ -6,29 +6,29 @@ var path = require('path'),
 
 describe('starterkit:templating', function() {
 
-	describe('when using jade', function () {
+	describe('when using pug', function () {
 		before(function(done) {
         	helpers.run(path.join(__dirname, '../generators/app'))
         	    .withOptions({
         	        skipInstall: true
         	    })
         	    .withPrompts({
-        	        templateLang: 'jade'
+        	        templateLang: 'pug'
         	    })
         	    .on('end', done);
     	});
 
 		it('creates expected files', function() {
         	assert.file([
-        	    'src/templates/index.jade',
-        	    'src/templates/_includes/_content.jade',
-        	    'src/templates/_includes/_head.jade',
-        	    'src/templates/_includes/_header.jade'
+        	    'src/templates/index.pug',
+        	    'src/templates/_includes/_content.pug',
+        	    'src/templates/_includes/_head.pug',
+        	    'src/templates/_includes/_header.pug'
         	]);
     	});
 
     	it('should contain necessary dependencies', function() {
-    	    [ 'gulp-jade'].forEach(function(dependency) {
+    	    [ 'gulp-pug'].forEach(function(dependency) {
     	        assert.fileContent('package.json', dependency);
     	    });
     	});
