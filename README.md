@@ -17,7 +17,7 @@
     - [**Sass**](http://sass-lang.com): CSS with superpowers.
     - [**Less**](http://lesscss.org): Less extends CSS with dynamic behavior.
 - Templating / Markup
-    - [**Jade**](http://jade-lang.com): Templating engine.
+    - [**Pug**](http://Pug-lang.com): Templating engine.
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - JavaScript
 	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
@@ -29,7 +29,7 @@
 ## Features
 
 - ```styles```: [Sass](http://sass-lang.com) / [Less](http://lesscss.org) auto compiling, prefixing, minifiying and sourcemapping.
-- ```templates```: [Jade](http://jade-lang.com) / Html auto compiling and minifiying.
+- ```templates```: [Pug](http://Pug-lang.com) / Html auto compiling and minifiying.
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
 - ```lint```: Lint your JavaScript files.
 - ```images```: Images optimization.
@@ -96,8 +96,8 @@ Also there are a lot of files being created dynamically such as gulp.js, package
 │   ├── /scripts/            # JavaScript files.
 │   ├── /styles/             # SCSS / Less style files.
 │   │   └── _includes/       # Styles SCSS / Less partials.
-│   ├── /templates/          # Templating Jade files / Html files.
-│   │   └── _includes/       # Templating Jade partials.
+│   ├── /templates/          # Templating Pug files / Html files.
+│   │   └── _includes/       # Templating Pug partials.
 └── gulpfile.js              # Gulp automatization file.
 ```
 
