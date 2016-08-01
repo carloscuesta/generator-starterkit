@@ -44,7 +44,7 @@
     "yosay": "^1.1.0"
   },
   "devDependencies": {
-    "mocha": "^2.5.0",
+    "mocha": "^3.0.0",
     "coveralls": "^2.11.9",
     "istanbul": "^0.4.3"
   }
