@@ -21,7 +21,6 @@ describe('starterkit:gulp', function() {
             'templates',
             'scripts',
             'images',
-            'ftp',
             'beautify',
             'serve',
             'uncss',
@@ -56,7 +55,6 @@ describe('starterkit:gulp', function() {
             'gulp-rename',
             'gulp-autoprefixer',
             'gulp-uglify',
-            'vinyl-ftp',
             'gulp-beautify',
             'gulp-uncss',
             'gulp-cssnano',
@@ -145,5 +143,65 @@ describe('starterkit:gulp', function() {
     	        assert.fileContent('gulpfile.js', pkg);
     	    });
     	});
+    });
+
+    describe('when using ftp deploy', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        deployMethod: 'ftp'
+        	    })
+        	    .on('end', done);
+    	});
+
+    	it('should contain require and imports', function() {
+    	    [
+    	        'vinyl-ftp'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
+
+        it('should contain deploy task', function() {
+            [
+                'ftp',
+            ].forEach(function(task) {
+                assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
+            });
+        });
+    });
+
+    describe('when using github pages deploy', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        deployMethod: 'gh-pages'
+        	    })
+        	    .on('end', done);
+    	});
+
+    	it('should contain require and imports', function() {
+    	    [
+    	        'gulp-gh-pages'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
+
+        it('should contain deploy task', function() {
+            [
+                'gh-pages',
+            ].forEach(function(task) {
+                assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
+            });
+        });
     });
 });

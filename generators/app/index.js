@@ -39,7 +39,8 @@ module.exports = yeoman.Base.extend({
             templateLang: this.templateLang,
             cssPrepro: this.cssPrepro,
             useFlexboxgrid: this.useFlexboxgrid,
-            useBootstrap: this.useBootstrap
+            useBootstrap: this.useBootstrap,
+            deployMethod: this.deployMethod
         };
 
         this.fs.copy(
@@ -81,6 +82,7 @@ module.exports = yeoman.Base.extend({
                 ftpUser: this.ftpUser,
                 ftpPassword: this.ftpPassword,
                 ftpDeployDir: this.ftpDeployDir,
+                deployMethod: this.deployMethod
             }
         );
 
@@ -98,7 +100,8 @@ module.exports = yeoman.Base.extend({
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useFlexboxgrid: this.useFlexboxgrid,
-                useBootstrap: this.useBootstrap
+                useBootstrap: this.useBootstrap,
+                deployMethod: this.deployMethod
             }
         );
 
@@ -278,15 +281,33 @@ module.exports = yeoman.Base.extend({
             },
             {
                 type: 'confirm',
-                name: 'setupFTP',
-                message: 'Would you like to setup your '+chalk.blue('FTP')+' to use the deploy task'
+                name: 'setupDeploy',
+                message: 'Would you like to set up a '+chalk.blue('deploy method')
+            },
+            {
+                type: 'list',
+                name: 'deployMethod',
+                message: 'Choose a '+chalk.blue('deploy method'),
+                choices: [{
+                    name: 'GitHub Pages',
+                    value: 'gh-pages'
+                }, {
+                    name: 'FTP',
+                    value: 'ftp'
+                }, {
+                    name: 'Surge',
+                    value: 'surge'
+                }],
+                when: function (answers) {
+                    return answers.setupDeploy;
+                }
             },
             {
                 type: 'input',
                 name: 'ftpHost',
                 message: 'Please enter your '+chalk.blue('ftp host:'),
                 when: function (answers) {
-                    return answers.setupFTP;
+                    return answers.deployMethod === 'ftp';
                 },
                 validate: function(value) {
                     if (value!=='') {
@@ -301,7 +322,7 @@ module.exports = yeoman.Base.extend({
                 name: 'ftpUser',
                 message: 'Please enter your '+chalk.blue('ftp user:'),
                 when: function (answers) {
-                    return answers.setupFTP;
+                    return answers.deployMethod === 'ftp';
                 },
                 validate: function(value) {
                     if (value!=='') {
@@ -316,7 +337,7 @@ module.exports = yeoman.Base.extend({
                 name: 'ftpPassword',
                 message: 'Please enter your '+chalk.blue('ftp password'),
                 when: function (answers) {
-                    return answers.setupFTP;
+                    return answers.deployMethod === 'ftp';
                 },
                 validate: function(value) {
                     if (value!=='') {
@@ -331,7 +352,7 @@ module.exports = yeoman.Base.extend({
                 name: 'ftpDeployDir',
                 message: 'Please enter the '+chalk.blue('ftp directory')+' where the deploy will go:',
                 when: function (answers) {
-                    return answers.setupFTP;
+                    return answers.setupDeploy === 'ftp';
                 },
                 validate: function(value) {
                     if (value!=='') {
@@ -360,6 +381,7 @@ module.exports = yeoman.Base.extend({
         this.useBabel = answers.useBabel;
         this.jsLinter = answers.jsLinter;
         this.useJSLint = answers.useJSLint;
+        this.deployMethod = answers.deployMethod;
         this.setupFTP = answers.setupFTP;
         this.ftpHost = answers.ftpHost;
         this.ftpUser = answers.ftpUser;
@@ -404,7 +426,7 @@ module.exports = yeoman.Base.extend({
 
     prompting: function() {
         var done = this.async();
-        
+
         this.prompt(this._askUser()).then(function (answers) {
             this._getAnswers(answers, done);
             done();

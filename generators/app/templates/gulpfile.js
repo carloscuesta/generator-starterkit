@@ -14,8 +14,9 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     minifyCss = require('gulp-cssnano'),
     uncss = require('gulp-uncss'),
     autoprefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'),
-    ftp = require('vinyl-ftp'),<% if (useBabel == true) { %>
+    uglify = require('gulp-uglify'),<% if (deployMethod == 'gh-pages') {%>
+    ghPages = require('gulp-gh-pages'),<% } if (deployMethod == 'ftp') {%>
+    ftp = require('vinyl-ftp'),<% } if (useBabel == true) { %>
     babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify'),
@@ -64,17 +65,17 @@ var routes = {
 
     deployDirs: {
         baseDir: baseDirs.dist,
-        baseDirFiles: baseDirs.dist+'**',
+        baseDirFiles: baseDirs.dist+'**/*',
         ftpUploadDir: 'FTP-DIRECTORY'
     }
-};
+};<% if (deployMethod == 'ftp') {%>
 /* ftpCredentials: info used to deploy @ ftp server */
 
 var ftpCredentials = {
     host: '<%= ftpHost %>',
     user: '<%= ftpUser %>',
     password: '<%= ftpPassword %>'
-};
+};<% } %>
 
 /* Compiling Tasks */
 
@@ -195,7 +196,7 @@ gulp.task('images', function() {
         .pipe(imagemin())
         .pipe(gulp.dest(routes.files.imgmin));
 });
-
+<% if (deployMethod == 'ftp') {%>
 /* Deploy, deploy dist/ files to an ftp server */
 
 gulp.task('ftp', function() {
@@ -221,7 +222,14 @@ gulp.task('ftp', function() {
             message: 'Your deploy has been done!.'
         }));
 });
-
+<% } if (deployMethod == 'gh-pages') {%>
+gulp.task('gh-pages', function() {
+    return gulp.src(routes.deployDirs.baseDirFiles)
+        .pipe(ghPages({
+            message: 'Yo! Updating and pushing [timestap]'
+        }));
+});
+<% } %>
 /* Preproduction beautifiying task (SCSS, JS) */
 
 gulp.task('beautify', function() {
@@ -308,7 +316,7 @@ gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
-gulp.task('deploy', ['optimize', 'ftp']);
+gulp.task('deploy', ['optimize',  <% if (deployMethod=='ftp'){%>'ftp'<%}if(deployMethod=='gh-pages'){%>'gh-pages'<%}%>]);
 
 gulp.task('default', function() {
     gulp.start('dev');
