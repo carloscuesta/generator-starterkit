@@ -1,4 +1,4 @@
-# generator-starterkit 
+# generator-starterkit
 
 [![Build Status](https://img.shields.io/travis/carloscuesta/generator-starterkit.svg?style=flat-square)](https://travis-ci.org/carloscuesta/generator-starterkit)
 [![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
@@ -23,8 +23,8 @@
 	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
 	- [**Npm**](https://www.npmjs.com): Package manager used to install dependencies and everything you need.
 	- Linters
-		- [**JSCS**](http://jscs.info): Code style linter for programmatically enforcing your style guide. 
-		- [**JSHint**](http://jshint.com): A Static Code Analysis Tool for JavaScript. 
+		- [**JSCS**](http://jscs.info): Code style linter for programmatically enforcing your style guide.
+		- [**JSHint**](http://jshint.com): A Static Code Analysis Tool for JavaScript.
 
 ## Features
 
@@ -33,7 +33,7 @@
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
 - ```lint```: Lint your JavaScript files.
 - ```images```: Images optimization.
-- ```deploy```: Deploying your project into a ftp server.
+- ```deploy```: Deploying your project into a github pages or ftp server.
 - ```beautify```: Beautify preproduction files.
 - ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
 - ```optimize```: Automatically autoptimize your project using [critical](https://github.com/addyosmani/critical) and [uncss](https://github.com/giakki/uncss), to improve your page speed.
