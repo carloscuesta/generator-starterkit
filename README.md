@@ -17,7 +17,7 @@
     - [**Sass**](http://sass-lang.com): CSS with superpowers.
     - [**Less**](http://lesscss.org): Less extends CSS with dynamic behavior.
 - Templating / Markup
-    - [**Pug**](http://Pug-lang.com): Templating engine.
+    - [**Pug**](https://pugjs.org): Templating engine.
     - [**Html**](https://developer.mozilla.org/es/docs/Web/HTML)
 - JavaScript
 	- [**Babel**](https://babeljs.io): Use next generation JavaScript, today.
