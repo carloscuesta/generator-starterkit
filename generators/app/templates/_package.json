@@ -46,7 +46,8 @@
     "flexboxgrid": "^6.3.1",<% } %> <% if (useBootstrap) { %>
     "bootstrap": "^3.3.6",<% } if (deployMethod == 'ftp') {%>
     "vinyl-ftp": "^0.5.0"<% } if (deployMethod == 'gh-pages') {%>
-	"gulp-gh-pages": "^0.5.4"<% } %>
+	"gulp-gh-pages": "^0.5.4"<% } if (deployMethod == 'surge') {%>
+	"gulp-surge": "^0.1.0"<% } %>
   },
   "devDependencies": {
     "mocha": "*"

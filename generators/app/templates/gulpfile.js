@@ -14,16 +14,17 @@ var gulp = require('gulp'),<% if (cssPrepro == 'less') { %>
     minifyCss = require('gulp-cssnano'),
     uncss = require('gulp-uncss'),
     autoprefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'),<% if (deployMethod == 'gh-pages') {%>
-    ghPages = require('gulp-gh-pages'),<% } if (deployMethod == 'ftp') {%>
-    ftp = require('vinyl-ftp'),<% } if (useBabel == true) { %>
+    uglify = require('gulp-uglify'),<% if (deployMethod == 'gh-pages') { %>
+    ghPages = require('gulp-gh-pages'),<% } if (deployMethod == 'ftp') { %>
+    ftp = require('vinyl-ftp'),<% } if (deployMethod == 'surge') { %>
+    surge = require('gulp-surge'),<% } if (useBabel == true) { %>
     babel = require('gulp-babel'),<% } %>
     cssimport = require('gulp-cssimport'),
     beautify = require('gulp-beautify'),
     sourcemaps = require('gulp-sourcemaps'),
     critical = require('critical').stream;
 
-//* baseDirs: baseDirs for the project */
+/* baseDirs: baseDirs for the project */
 
 var baseDirs = {
     dist:'dist/',
@@ -229,6 +230,13 @@ gulp.task('gh-pages', function() {
             message: 'Yo! Updating and pushing [timestap]'
         }));
 });
+<% } if (deployMethod == 'surge') {%>
+gulp.task('surge', function() {
+    return surge({
+        project: routes.deployDirs.baseDir,
+        domain: '<%= appname %>.surge.sh'
+    });
+});
 <% } %>
 /* Preproduction beautifiying task (SCSS, JS) */
 
@@ -316,7 +324,7 @@ gulp.task('build', ['templates', 'styles', 'scripts', 'images']);
 
 gulp.task('optimize', ['uncss', 'critical', 'images']);
 
-gulp.task('deploy', ['optimize',  <% if (deployMethod=='ftp'){%>'ftp'<%}if(deployMethod=='gh-pages'){%>'gh-pages'<%}%>]);
+gulp.task('deploy', ['optimize',  <% if (deployMethod=='ftp'){%>'ftp'<%}if(deployMethod=='gh-pages'){%>'gh-pages'<%}if(deployMethod=='surge'){%>'surge'<%}%>]);
 
 gulp.task('default', function() {
     gulp.start('dev');

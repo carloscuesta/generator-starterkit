@@ -204,4 +204,34 @@ describe('starterkit:gulp', function() {
             });
         });
     });
+
+    describe('when using github pages deploy', function () {
+    	before(function(done) {
+        	helpers.run(path.join(__dirname, '../generators/app'))
+        	    .inDir(path.join(__dirname, './.tmp'))
+        	    .withOptions({
+        	        skipInstall: true
+        	    })
+        	    .withPrompts({
+        	        deployMethod: 'surge'
+        	    })
+        	    .on('end', done);
+    	});
+
+    	it('should contain require and imports', function() {
+    	    [
+    	        'gulp-surge'
+    	    ].forEach(function(pkg) {
+    	        assert.fileContent('gulpfile.js', pkg);
+    	    });
+    	});
+
+        it('should contain deploy task', function() {
+            [
+                'surge',
+            ].forEach(function(task) {
+                assert.fileContent('gulpfile.js', 'gulp.task(\'' + task);
+            });
+        });
+    });
 });

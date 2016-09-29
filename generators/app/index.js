@@ -294,7 +294,10 @@ module.exports = yeoman.Base.extend({
                 }, {
                     name: 'FTP',
                     value: 'ftp'
-                }],
+                }, {
+					name: 'Surge',
+					value: 'surge'
+				}],
                 when: function (answers) {
                     return answers.setupDeploy;
                 }
