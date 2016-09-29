@@ -33,7 +33,7 @@
 - ```scripts```: Scripts concatenation, transpiling with [Babel](https://babeljs.io), minifiying and sourcemapping.
 - ```lint```: Lint your JavaScript files.
 - ```images```: Images optimization.
-- ```deploy```: Deploying your project into a github pages or ftp server.
+- ```deploy```: Deploying your project into a github pages surge or ftp server.
 - ```beautify```: Beautify preproduction files.
 - ```browsersync```: Automatically injects all your changes in ```styles```, ```templates``` and ```scripts``` into your browser and other devices on save.
 - ```optimize```: Automatically autoptimize your project using [critical](https://github.com/addyosmani/critical) and [uncss](https://github.com/giakki/uncss), to improve your page speed.
