@@ -21,7 +21,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "browser-sync": "^2.16.0",
+    "browser-sync": "^2.16.1",
     "critical": "^0.8.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",<% if (useBabel == true) { %>
