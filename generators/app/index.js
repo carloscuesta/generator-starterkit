@@ -73,6 +73,7 @@ module.exports = yeoman.Base.extend({
             this.templatePath('gulpfile.js'),
             this.destinationPath('gulpfile.js'),
             {
+            	appname: this.appname,
                 templateLang: this.templateLang,
                 cssPrepro: this.cssPrepro,
                 useBabel: this.useBabel,
