@@ -4,7 +4,7 @@ Hello! Thanks for contibutting to generator-starterkit. Before implementing new 
 
 ### How to submit a pull request ?
 
-1. [Fork this repository](https://github.com/carloscuesta/hyperterm-materialshell/fork)
+1. [Fork this repository](https://github.com/carloscuesta/generator-starterkit/fork)
 2. Create a new branch with your feature or fix name.
 3. Make your changes.
 4. Commit your changes. Don't forget to add a **commit title and message**.
