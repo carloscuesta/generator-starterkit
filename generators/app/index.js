@@ -1,11 +1,9 @@
-'use strict';
-
-import yeoman from "yeoman-generator";
+import { Base } from 'yeoman-generator';
 import chalk from "chalk";
 import yosay from "yosay";
 import mkdirp from "mkdirp";
 
-export class Main extends yeoman.Base {
+export default class MyGenerator extends Base {
 
     _projectStructure() {
         let destRoot = this.destinationRoot(),
