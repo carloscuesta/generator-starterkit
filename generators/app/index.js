@@ -1,34 +1,34 @@
 'use strict';
 
-var yeoman = require('yeoman-generator'),
-    chalk = require('chalk'),
-    yosay = require('yosay'),
-    mkdirp = require('mkdirp');
+import yeoman from "yeoman-generator";
+import chalk from "chalk";
+import yosay from "yosay";
+import mkdirp from "mkdirp";
 
-module.exports = yeoman.Base.extend({
+export class Main extends yeoman.Base {
 
-    _projectStructure: function() {
-        var destRoot = this.destinationRoot(),
-            distDir = destRoot + '/dist/',
-            srcDir = destRoot + '/src/',
-            assetsDir = distDir + '/assets/';
+    _projectStructure() {
+        let destRoot = this.destinationRoot(),
+            distDir = `${destRoot}/dist/`,
+            srcDir = `${destRoot}/src/`,
+            assetsDir = `${distDir}/assets/`;
 
         mkdirp(distDir);
-        mkdirp(assetsDir + '/css');
-        mkdirp(assetsDir + '/js');
-        mkdirp(assetsDir + '/files/img');
+        mkdirp(`${assetsDir}/css`);
+        mkdirp(`${assetsDir}/js`);
+        mkdirp(`${assetsDir}/files/img`);
 
         mkdirp(srcDir);
-        mkdirp(srcDir + '/images');
-        mkdirp(srcDir + '/scripts');
-        mkdirp(srcDir + '/styles/_includes/');
+        mkdirp(`${srcDir}/images`);
+        mkdirp(`${srcDir}/scripts`);
+        mkdirp(`${srcDir}/styles/_includes/`);
         if (this.templateLang==='pug') {
-            mkdirp(srcDir + '/templates/_includes/');
+            mkdirp(`${srcDir}/templates/_includes/`);
         }
     },
 
-    _projectFiles: function() {
-        var projectInfo = {
+    _projectFiles() {
+        let projectInfo = {
             appname: this.appname,
             appdescription: this.appdescription,
             applicense: this.applicense,
@@ -124,12 +124,12 @@ module.exports = yeoman.Base.extend({
         );
 
         this.fs.copy(
-            this.templatePath('styles/'+this.cssPrepro+'/_includes/_*.'+this.cssPrepro),
+            this.templatePath(`styles/${this.cssPrepro}/_includes/_*.${this.cssPrepro}`),
             this.destinationPath('src/styles/_includes')
         );
 
         this.fs.copyTpl(
-            this.templatePath('styles/'+this.cssPrepro+'/*.'+this.cssPrepro),
+            this.templatePath(`styles/${this.cssPrepro}/*.${this.cssPrepro}`),
             this.destinationPath('src/styles'),
             {
                 useFlexboxgrid: this.useFlexboxgrid,
@@ -168,8 +168,8 @@ module.exports = yeoman.Base.extend({
 
     },
 
-    _askUser: function() {
-        var answers = [
+    _askUser() {
+        let answers = [
             {
                 name: 'name',
                 message: 'What is the name of your project',
@@ -178,7 +178,7 @@ module.exports = yeoman.Base.extend({
             {
                 name: 'description',
                 message: 'Enter a the description for your project',
-                validate: function(value) {
+                validate: (value) => {
                     if (value!=='') {
                         return true;
                     } else {
@@ -194,7 +194,7 @@ module.exports = yeoman.Base.extend({
             {
                 name: 'author',
                 message: 'What is your name',
-                validate: function(value) {
+                validate: (value) => {
                     if (value!=='') {
                         return true;
                     } else {
@@ -205,8 +205,8 @@ module.exports = yeoman.Base.extend({
             {
                 name: 'email',
                 message: 'What is your email address',
-                validate: function(value) {
-                    var validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+                validate: (value) => {
+                    let validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
                     if (validEmail) {
                         return true;
                     } else {
@@ -217,7 +217,7 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'list',
                 name: 'templateLang',
-                message: 'Choose a '+chalk.green('templating or markup language'),
+                message: `Choose a ${chalk.green('templating or markup language')}`,
                 choices: [{
                     name: 'Pug',
                     value: 'pug'
@@ -229,7 +229,7 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'list',
                 name: 'cssPrepro',
-                message: 'Choose a '+chalk.magenta('CSS preprocessor'),
+                message: `Choose a ${chalk.magenta('CSS preprocessor')}`,
                 choices: [{
                     name: 'Sass',
                     value: 'scss'
@@ -241,18 +241,18 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'confirm',
                 name: 'useBabel',
-                message: 'Would you like to use '+chalk.yellow('Babel'),
+                message: `Would you like to use ${chalk.yellow('Babel')}`,
                 default: true
             },
             {
                 type: 'confirm',
                 name: 'useJSLint',
-                message: 'Would you like to use a '+chalk.yellow('JS Linter')
+                message: `Would you like to use a ${chalk.yellow('JS Linter')}`
             },
             {
                 type: 'list',
                 name: 'jsLinter',
-                message: 'Choose a '+chalk.yellow('JSLinter'),
+                message: `Choose a ${chalk.yellow('JSLinter')}`,
                 choices: [{
                     name: 'JSCS',
                     value: 'jscs'
@@ -260,9 +260,7 @@ module.exports = yeoman.Base.extend({
                     name: 'JSHint',
                     value: 'jshint'
                 }],
-                when: function (answers) {
-                    return answers.useJSLint;
-                }
+                when: answers => answers.useJSLint
             },
             {
                 type: 'checkbox',
@@ -283,12 +281,12 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'confirm',
                 name: 'setupDeploy',
-                message: 'Would you like to set up a '+chalk.blue('deploy method')
+                message: `Would you like to set up a ${chalk.blue('deploy method')}`
             },
             {
                 type: 'list',
                 name: 'deployMethod',
-                message: 'Choose a '+chalk.blue('deploy method'),
+                message: `Choose a ${chalk.blue('deploy method')}`,
                 choices: [{
                     name: 'GitHub Pages',
                     value: 'gh-pages'
@@ -296,21 +294,17 @@ module.exports = yeoman.Base.extend({
                     name: 'FTP',
                     value: 'ftp'
                 }, {
-					name: 'Surge',
-					value: 'surge'
-				}],
-                when: function (answers) {
-                    return answers.setupDeploy;
-                }
+        					name: 'Surge',
+        					value: 'surge'
+        				}],
+                when: answers => answers.setupDeploy
             },
             {
                 type: 'input',
                 name: 'ftpHost',
-                message: 'Please enter your '+chalk.blue('ftp host:'),
-                when: function (answers) {
-                    return answers.deployMethod === 'ftp';
-                },
-                validate: function(value) {
+                message: `Please enter your ${chalk.blue('ftp host:')}`,
+                when: answers => answers.deployMethod === 'ftp',
+                validate: (value) => {
                     if (value!=='') {
                         return true;
                     } else {
@@ -321,11 +315,9 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'input',
                 name: 'ftpUser',
-                message: 'Please enter your '+chalk.blue('ftp user:'),
-                when: function (answers) {
-                    return answers.deployMethod === 'ftp';
-                },
-                validate: function(value) {
+                message: `Please enter your ${chalk.blue('ftp user:')}`,
+                when: answers => answers.deployMethod === 'ftp',
+                validate: (value) => {
                     if (value!=='') {
                         return true;
                     } else {
@@ -336,11 +328,9 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'password',
                 name: 'ftpPassword',
-                message: 'Please enter your '+chalk.blue('ftp password'),
-                when: function (answers) {
-                    return answers.deployMethod === 'ftp';
-                },
-                validate: function(value) {
+                message: `Please enter your ${chalk.blue('ftp password')}`,
+                when: answers => answers.deployMethod === 'ftp',
+                validate: (value) => {
                     if (value!=='') {
                         return true;
                     } else {
@@ -351,11 +341,9 @@ module.exports = yeoman.Base.extend({
             {
                 type: 'input',
                 name: 'ftpDeployDir',
-                message: 'Please enter the '+chalk.blue('ftp directory')+' where the deploy will go:',
-                when: function (answers) {
-                    return answers.setupDeploy === 'ftp';
-                },
-                validate: function(value) {
+                message: `Please enter the ${chalk.blue('ftp directory')} where the deploy will go:`,
+                when: answers => answers.setupDeploy === 'ftp',
+                validate: (value) {
                     if (value!=='') {
                         return true;
                     } else {
@@ -367,10 +355,9 @@ module.exports = yeoman.Base.extend({
         return answers;
     },
 
-    _getAnswers: function(answers, callback) {
-        function hasAdditionalPackages (pkg) {
-            return answers.additionalPackages && answers.additionalPackages.indexOf(pkg) !== -1;
-        }
+    _getAnswers: (answers, callback) => {
+        let hasAdditionalPackages = pkg => answers.additionalPackages && answers.additionalPackages.indexOf(pkg) !== -1;
+        
         this.appname = answers.name;
         this.appdescription = answers.description;
         this.appversion = answers.version;
@@ -393,8 +380,8 @@ module.exports = yeoman.Base.extend({
         callback();
     },
 
-    constructor: function() {
-        yeoman.Base.apply(this, arguments);
+    constructor() {
+        super(...arguments);
 
         this.option('skip-welcome-message', {
             desc: 'Skips the welcome message',
@@ -415,8 +402,8 @@ module.exports = yeoman.Base.extend({
         });
     },
 
-    initializing: function() {
-        var greeting = 'Welcome to the ' + chalk.red.bold('starterkit') + '!' + ' A solid ' + chalk.blue('webkit') + ' to develop '+chalk.yellow('front end')+' static projects';
+    initializing() {
+        let greeting = `Welcome to the ${chalk.red.bold('starterkit')}! A solid ${chalk.blue('webkit')} to develop ${chalk.yellow('front end')} static projects`;
 
         if (!this.options['skip-welcome-message']){
             this.log(yosay(greeting, {
@@ -425,34 +412,34 @@ module.exports = yeoman.Base.extend({
         }
     },
 
-    prompting: function() {
-        var done = this.async();
+    prompting() {
+        let done = this.async();
 
-        this.prompt(this._askUser()).then(function (answers) {
+        this.prompt(this._askUser()).then((answers) => {
             this._getAnswers(answers, done);
             done();
         }.bind(this));
     },
 
-    writing: function() {
+    writing() {
         this._projectStructure();
         this._projectFiles();
     },
 
-    install: function() {
+    install() {
         this.installDependencies({
             bower: false,
             skipInstall: this.options['skip-install'],
             skipMessage: this.options['skip-install-message'],
-            callback: function() {
+            callback() {
                 this._end();
-                this.log('Run'+chalk.red(' gulp ')+'to start coding!\n');
+                this.log(`Run ${chalk.red(' gulp ')} to start coding!\n`);
             }.bind(this)
         });
     },
 
-    _end: function() {
-        var goodBye = '\nYo! It\'s done have a great day :) '+chalk.bold.red('starterkit ')+'finished!\n';
+    _end() {
+        let goodBye = `\nYo! It\'s done have a great day :) ${chalk.bold.red('starterkit ')} finished!\n`;
         if (!this.options['skip-welcome-message']){
             this.log(goodBye);
         }
