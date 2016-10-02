@@ -11,10 +11,20 @@
     "url": "https://github.com/carloscuesta"
   },
   "homepage": "https://generatorstarterkit.carloscuesta.me",
+  "xo": {
+	"esnext": true,
+	"overrides": [
+		{
+			"files": "generators/app/index.es6.js",
+			"default-case": ["error"]
+		}
+	]
+  },
   "scripts": {
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
-    "test": "npm run coveralls",
-    "build": "babel --out-file generators/app/index.js generators/app/index.es6",
+	"lint": "xo generators/app/index.js",
+    "test": "npm run lint && npm run coveralls",
+    "build": "babel --out-file generators/app/index.js generators/app/index.es6.js",
     "publish": "npm run build && npm publish"
   },
   "files": [
