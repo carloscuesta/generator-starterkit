@@ -15,7 +15,7 @@
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
     "test": "npm run coveralls",
     "build": "babel --out-file generators/app/index.js generators/app/index.es6",
-    "prerelease": "npm run build"
+    "publish": "npm run build && npm publish"
   },
   "files": [
     "generators"

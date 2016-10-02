@@ -428,6 +428,6 @@ class Starterkit extends Base {
             this.log(goodBye);
         }
     }
-};
+}
 
 module.exports = Starterkit;
