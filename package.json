@@ -12,17 +12,19 @@
   },
   "homepage": "https://generatorstarterkit.carloscuesta.me",
   "xo": {
-	"esnext": true,
-	"overrides": [
-		{
-			"files": "generators/app/index.es6.js",
-			"default-case": ["error"]
-		}
-	]
+    "esnext": true,
+    "overrides": [
+      {
+        "files": "generators/app/index.es6.js",
+        "default-case": [
+          "error"
+        ]
+      }
+    ]
   },
   "scripts": {
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
-	"lint": "xo generators/app/index.js",
+    "lint": "xo generators/app/index.js",
     "test": "npm run lint && npm run coveralls",
     "build": "babel --out-file generators/app/index.js generators/app/index.es6.js",
     "publish": "npm run build && npm publish"
@@ -56,12 +58,13 @@
     "yosay": "^1.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-register": "^6.16.3",
-    "babel-cli": "^6.16.0",
     "coveralls": "^2.11.9",
     "istanbul": "^0.4.3",
-    "mocha": "^3.0.0"
+    "mocha": "^3.0.0",
+    "xo": "^0.16.0"
   },
   "babel": {
     "presets": [
