@@ -8,7 +8,7 @@ var path = require('path'),
 
 describe('starterkit:files', function() {
     before(function(done) {
-        helpers.run(path.join(__dirname, '../generators/app/index.es6'))
+        helpers.run(path.join(__dirname, '../generators/app/index.es6.js'))
             .withOptions({
                 skipInstall: true
             })
@@ -27,7 +27,7 @@ describe('starterkit:files', function() {
 
     describe('when using jscs', function () {
     	before(function(done) {
-        	helpers.run(path.join(__dirname, '../generators/app/index.es6'))
+        	helpers.run(path.join(__dirname, '../generators/app/index.es6.js'))
         	    .inDir(path.join(__dirname, './.tmp'))
         	    .withOptions({
         	        skipInstall: true
@@ -47,7 +47,7 @@ describe('starterkit:files', function() {
 
     describe('when using jshint', function () {
     	before(function(done) {
-        	helpers.run(path.join(__dirname, '../generators/app/index.es6'))
+        	helpers.run(path.join(__dirname, '../generators/app/index.es6.js'))
         	    .inDir(path.join(__dirname, './.tmp'))
         	    .withOptions({
         	        skipInstall: true
