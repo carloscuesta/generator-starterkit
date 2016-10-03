@@ -4,6 +4,7 @@
 [![Dependency Status](http://img.shields.io/david/carloscuesta/generator-starterkit.svg?style=flat-square)](https://david-dm.org/carloscuesta/generator-starterkit)
 [![npm version](https://img.shields.io/npm/v/generator-starterkit.svg?style=flat-square)](https://www.npmjs.com/package/generator-starterkit)
 [![npm-downloads](https://img.shields.io/npm/dt/generator-starterkit.svg?style=flat-square)](http://npmjs.com/package/generator-starterkit)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
 
 
 ![yeoman-starterkit](https://cloud.githubusercontent.com/assets/7629661/11163398/ca52709c-8acd-11e5-88da-8256ab5b6fa0.png)
