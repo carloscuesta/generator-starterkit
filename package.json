@@ -26,7 +26,7 @@
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
     "lint": "xo generators/app/index.es6.js",
 	"build": "babel --out-file generators/app/index.js generators/app/index.es6.js",
-    "test": "npm run build && npm run lint && ./node_modules/mocha/bin/_mocha --compilers js:babel-register -R spec ./test/*"
+    "test": "npm run build && npm run lint && npm run coveralls"
   },
   "files": [
     "generators"
