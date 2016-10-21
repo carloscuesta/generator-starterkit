@@ -2,6 +2,7 @@ import {Base} from 'yeoman-generator';
 import chalk from 'chalk';
 import yosay from 'yosay';
 import mkdirp from 'mkdirp';
+import includes from 'array-includes';
 
 class Starterkit extends Base {
 
@@ -367,7 +368,7 @@ class Starterkit extends Base {
 
 	_getAnswers(answers, callback) {
 		function hasAdditionalPackages(pkg) {
-			return answers.additionalPackages && answers.additionalPackages.includes(pkg);
+			return answers.additionalPackages && includes(answers.additionalPackages, pkg);
 		}
 		this.appname = answers.name;
 		this.appdescription = answers.description;
