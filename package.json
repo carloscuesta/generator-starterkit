@@ -25,9 +25,12 @@
   "scripts": {
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
     "lint": "xo generators/app/index.es6.js",
-	"build": "babel --out-file generators/app/index.js generators/app/index.es6.js",
+    "build": "babel --out-file generators/app/index.js generators/app/index.es6.js",
     "test": "npm run build && npm run lint && npm run coveralls"
   },
+  "pre-commit": [
+	"test"
+  ],
   "files": [
     "generators"
   ],
@@ -64,6 +67,7 @@
     "coveralls": "^2.11.9",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.0",
+    "pre-commit": "^1.1.3",
     "xo": "^0.17.0"
   },
   "babel": {
