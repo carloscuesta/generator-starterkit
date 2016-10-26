@@ -195,7 +195,7 @@ class Starterkit extends Base {
 			default: this.appname
 		}, {
 			name: 'description',
-			message: 'Enter a the description for your project',
+			message: 'Enter a description for your project',
 			validate(value) {
 				if (value !== '') {
 					return true;
