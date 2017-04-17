@@ -58,7 +58,7 @@
     "yeoman-assert": "^3.0.0",
     "yeoman-generator": "^0.24.1",
     "yeoman-test": "^1.4.0",
-    "yosay": "^1.2.0"
+    "yosay": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
