@@ -13,14 +13,9 @@
   "homepage": "https://generatorstarterkit.carloscuesta.me",
   "xo": {
     "esnext": true,
-    "overrides": [
-      {
-        "files": "generators/app/index.es6.js",
-        "default-case": [
-          "error"
-        ]
-      }
-    ]
+	"rules": {
+		"capitalized-comments": 0
+	}
   },
   "scripts": {
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --compilers js:babel-register -R spec ./test/*",
@@ -68,7 +63,7 @@
     "istanbul": "^0.4.3",
     "mocha": "^3.0.0",
     "pre-commit": "^1.1.3",
-    "xo": "^0.17.0"
+    "xo": "^0.18.1"
   },
   "babel": {
     "presets": [
